@@ -6,6 +6,7 @@ import { buttonVariants } from "../ui/Button";
 import { getAuthSession } from "@/lib/auth";
 import UserNavbar from "./UserNavbar";
 import SearchBar from "../SearchBar";
+import { cn } from "@/lib/utils";
 
 const Navbar = async () => {
   const session = await getAuthSession();
@@ -28,7 +29,7 @@ const Navbar = async () => {
         {session?.user ? (
           <UserNavbar user={session?.user} />
         ) : (
-          <Link href="sign-in" className={buttonVariants()}>
+          <Link href="sign-in" className={cn(buttonVariants(), 'sm:text-base text-sm')}>
             Sign in
           </Link>
         )}

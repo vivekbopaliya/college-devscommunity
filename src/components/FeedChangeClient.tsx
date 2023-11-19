@@ -24,9 +24,9 @@ const FeedChangeClient: FC<FeedChangeClientProps> = ({
   };
 
   return (
-    <div className="pt-12 sm:container mx-auto h-full">
+    <div className="sm:pt-12 pt-8 sm:container sm:mx-auto h-full">
       <div>
-        <div className="text-5xl font-bold flex   items-center my-2  gap-5">
+        <div className="text-5xl font-bold flex flex-col items-center my-2  gap-5">
           <h1>{feed === "GENERAL" ? "General" : "Customized"} feed</h1>
           <Button
             className={cn(buttonVariants({ variant: "subtle" }))}

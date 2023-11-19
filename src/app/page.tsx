@@ -25,8 +25,8 @@ import SignOut from "@/components/SignOut";
 export default async function Home() {
   const session = await getAuthSession();
   return (
-    <>
-      <div className="w-full flex justify-center items-center">
+    <div className="container">
+      <div className="w-full flex justify-center items-center  ">
         <div className="flex flex-col justify-center items-center text-center gap-4 max-w-5xl h-fit my-10">
           <p className="text-xs font-light mb-3 rounded-lg border-opacity-30 px-3 py-2 text-slate-900 border border-slate-900 ">
             First time at Atmiya University
@@ -35,7 +35,7 @@ export default async function Home() {
             Google Developers Student Club
           </p>
 
-          <p className="text-slate-500  text-2xl">
+          <p className="text-slate-500  sm:text-2xl text-xl">
             Connect. Interact. Learn. Grow.
           </p>
 
@@ -166,7 +166,7 @@ export default async function Home() {
         <div className=" max-w-3xl flex flex-col justify-center items-center ">
           <h1 className=" text-lg font-light">FAQs</h1>
 
-          <h1 className="text-6xl font-bold my-8">
+          <h1 className="sm:text-6xl text-4xl font-bold my-8">
             {" "}
             <span className="text-red-500">G</span>et
             <span className="text-blue-500"> I</span>n{" "}
@@ -185,7 +185,7 @@ export default async function Home() {
                 How to join GDSC AU?
               </AccordionTrigger>
 
-              <AccordionContent className="text-lg leading-relaxed">
+              <AccordionContent className="sm:text-lg text-base leading-relaxed">
                 You can join GDSC AU by clicking on the above JOIN GDSC button
                 and be a part of community filled with passionate and
                 enthusiastic individuals.
@@ -200,7 +200,7 @@ export default async function Home() {
               <AccordionTrigger className="font-medium text-xl text-blue-600">
                 Who should join GDSC AU?
               </AccordionTrigger>
-              <AccordionContent className="text-lg  leading-relaxed">
+              <AccordionContent className="sm:text-lg text-base leading-relaxed">
                 Anyone who is interested in tech and dedicated to learn new
                 technologies and make strong connections should join GDSC AU?
               </AccordionContent>
@@ -213,21 +213,18 @@ export default async function Home() {
               <AccordionTrigger className="font-medium text-xl text-blue-600">
                 What is the purpose of GDSC?
               </AccordionTrigger>
-              <AccordionContent className="text-lg  leading-relaxed">
+              <AccordionContent className="sm:text-lg text-base  leading-relaxed">
                 The purpose of GDSC is to enlighten the students about the
                 present and upcoming technologies and help them in their journey
                 of learning new stuff.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem
-              value="item-4"
-              className="flex flex-col justify-center"
-            >
+            <AccordionItem value="item-4" className="flex flex-col ">
               <AccordionTrigger className="font-medium text-xl text-blue-600">
                 What is the purpose of this Website?
               </AccordionTrigger>
-              <AccordionContent className="text-lg  leading-relaxed">
+              <AccordionContent className="sm:text-lg text-base  leading-relaxed">
                 The purpose of this website is to provide a bridge for people
                 who want to find a community of people having same intrests as
                 them, use it to showcase your personal project, share new tech
@@ -264,6 +261,6 @@ export default async function Home() {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 }

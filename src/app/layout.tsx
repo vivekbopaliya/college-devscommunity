@@ -30,7 +30,7 @@ export default function RootLayout({
           {/* @ts-ignore */}
           <Navbar />
 
-          <div className="pt-12  max-w-7xl container mx-auto h-full">
+          <div className="pt-12  sm:max-w-7xl max-w-full px-3 sm:px-0 sm:container sm:mx-auto h-full">
             {children}
           </div>
 
