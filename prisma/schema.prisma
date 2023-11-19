@@ -6,23 +6,23 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "mongodb"
   url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
 model Account {
-  id                String  @id @default(cuid())
+  id                String  @id @default(cuid()) @map("_id")
   userId            String
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -31,7 +31,7 @@ model Account {
 }
 
 model Session {
-  id           String   @id @default(cuid())
+  id           String   @id @default(cuid()) @map("_id")
   sessionToken String   @unique
   userId       String
   expires      DateTime
@@ -39,12 +39,101 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String    @id @default(cuid()) @map("_id")
   name          String?
   email         String?   @unique
   emailVerified DateTime?
+  image         String?
+  points        Int
 
-  image    String?
+  role     RoleType  @default(User)
   accounts Account[]
   sessions Session[]
+
+  createdSubreddit Subreddit[]    @relation("createdBy")
+  posts            Post[]
+  comments         Comment[]
+  votes            Vote[]
+  commentVotes     CommentVote[]
+  subscribedTo     Subscription[]
+}
+
+model Subreddit {
+  id          String         @id @default(cuid()) @map("_id")
+  name        String
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  posts       Post[]
+  creatorId   String
+  creator     User           @relation("createdBy", fields: [creatorId], references: [id])
+  subscribers Subscription[]
+}
+
+model Post {
+  id          String    @id @default(cuid()) @map("_id")
+  title       String
+  content     Json?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  authorId    String
+  author      User      @relation(fields: [authorId], references: [id])
+  subredditId String
+  subreddit   Subreddit @relation(fields: [subredditId], references: [id])
+
+  comments Comment[]
+  votes    Vote[]
+}
+
+model Comment {
+  id        String        @id @default(cuid()) @map("_id")
+  authorId  String
+  author    User          @relation(fields: [authorId], references: [id])
+  content   String
+  postId    String
+  post      Post          @relation(fields: [postId], references: [id])
+  createdAt DateTime      @default(now())
+  votes     CommentVote[]
+
+  replyToId String?
+  replyTo   Comment?  @relation("ReplyTo", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  replies   Comment[] @relation("ReplyTo")
+}
+
+enum VoteType {
+  UP
+  DOWN
+}
+
+enum RoleType {
+  User
+  Admin
+}
+
+model Vote {
+  id     String @id @default(cuid()) @map("_id")
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  postId String
+  post   Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  type   VoteType
+}
+
+model CommentVote {
+  id     String @id @default(cuid()) @map("_id")
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  commentId String
+  comment   Comment  @relation(fields: [commentId], references: [id])
+  type      VoteType
+}
+
+model Subscription {
+  id String @id @default(cuid()) @map("_id")
+
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  subredditId String
+  subreddit   Subreddit @relation(fields: [subredditId], references: [id])
 }

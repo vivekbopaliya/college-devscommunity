@@ -1,18 +1,42 @@
-import '@/styles/globals.css'
+import Navbar from "@/components/Navbar/Navbar";
+import { Toaster } from "@/components/ui/Toaster";
+import { cn } from "@/lib/utils";
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import QueryProvider from "@/lib/providers/QueryProvider";
 
-export const metadata = {
-  title: 'Breadit',
-  description: 'A Reddit clone built with Next.js and TypeScript.',
-}
+const inter = Inter({ subsets: ["latin"] });
+export const metadata: Metadata = {
+  title: "GDSC - AU | Atmiya University, Rajkot",
+  description: "A community for Atmiya developers.",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={cn(
+        "bg-white text-slate-900 antialiased light",
+        inter.className
+      )}
+    >
+      <body className="pt-12  min-h-screen bg-slate-50 antialiased">
+        <QueryProvider>
+          {/* @ts-ignore */}
+          <Navbar />
+
+          <div className="pt-12  max-w-7xl container mx-auto h-full">
+            {children}
+          </div>
+
+          <Toaster />
+        </QueryProvider>
+      </body>
     </html>
-  )
+  );
 }

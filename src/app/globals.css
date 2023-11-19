@@ -79,3 +79,13 @@
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+::selection {
+  color: black;
+  background: greenyellow;
+}
