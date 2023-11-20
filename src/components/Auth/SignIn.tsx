@@ -17,15 +17,6 @@ const SignIn: FC = () => {
         </p>
       </div>
       <UserAuthForm />
-      <p className="px-8 space-y-5 text-center text-sm text-muted-foreground">
-        New to here?{" "}
-        <Link
-          href="/sign-up"
-          className="hover:text-brand text-sm underline underline-offset-4"
-        >
-          Sign Up
-        </Link>
-      </p>
     </div>
   );
 };
