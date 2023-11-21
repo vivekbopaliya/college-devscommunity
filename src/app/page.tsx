@@ -55,7 +55,7 @@ export default async function Home() {
         {/* Feed */}
 
         <div className="overflow-hidden h-fit dark:border-opacity-20 rounded-lg border border-gray-100  dark:border-white order-last">
-          <div className="bg-red-100 dark:bg-red-700 px-6 py-4">
+          <div className="bg-red-100 dark:bg-purple-600 dark:text-black px-6 py-4">
             <p className="font-semibold py-3 flex items-center gap-1.5">
               <LayoutDashboardIcon />
               Dashboard
@@ -81,7 +81,7 @@ export default async function Home() {
         </div>
         {/* Subreddit Info */}
         <div className="overflow-hidden dark:border-white h-fit rounded-lg border dark:border-opacity-20 border-gray-100 order-first ">
-          <div className="bg-emerald-100 dark:bg-emerald-600 px-6 py-4">
+          <div className="bg-emerald-100 dark:bg-emerald-500 dark:text-black px-6 py-4">
             <p className="font-semibold py-3 flex items-center gap-1.5">
               <HomeIcon />
               Communities
@@ -106,7 +106,7 @@ export default async function Home() {
           </div>
         </div>
         <div className="overflow-hidden dark:border-opacity-20 dark:border-white h-fit rounded-lg border border-gray-100 order-2 ">
-          <div className="bg-amber-100 dark:bg-amber-600 px-6 py-4">
+          <div className="bg-amber-100 dark:bg-cyan-500 dark:text-black px-6 py-4">
             <p className="font-semibold py-3 flex items-center gap-1.5">
               <NewspaperIcon />
               Newletters
@@ -147,7 +147,7 @@ export default async function Home() {
             <span className="text-yellow-500">C</span> & why shoud you care?
           </h1>
           <div className="flex flex-col justify-center items-center">
-            <p className=" text-center  my-4">
+            <p className=" text-center dark:text-gray-200  my-4">
               GDSC-AU is like a tech-savvy family within our university, all
               geared up to explore the tech universe with Google's tools. Our
               main gig? Boosting each other's developer skills and actually
@@ -242,7 +242,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="flex my-10 justify-center items-center">
+      <div className="flex mt-10 justify-center items-center">
         <div className=" flex gap-2 ">
           <Link
             target="_blank"

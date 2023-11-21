@@ -51,7 +51,7 @@ const Dashboard: FC<DashboardProps> = ({ users }) => {
     },
   });
   return (
-    <Table className="border w-full border-gray-400 border-opacity-50 px-3 py-2">
+    <Table className="border max-w-5xl border-gray-400 border-opacity-50 px-3 py-2">
       <TableCaption>
         The points have been given based on the members' performace in past GDSC
         events.
@@ -64,6 +64,7 @@ const Dashboard: FC<DashboardProps> = ({ users }) => {
           <TableHead className="sm:text-lg sm:flex text-white sm:items-center hidden">
             Gmail
           </TableHead>
+
           <TableHead className="sm:text-lg text-white">Points</TableHead>
         </TableRow>
       </TableHeader>

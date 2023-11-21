@@ -26,10 +26,10 @@ const FeedChangeClient: FC<FeedChangeClientProps> = ({
   return (
     <div className="sm:pt-12 pt-8 sm:container sm:mx-auto h-full">
       <div>
-        <div className="text-5xl font-bold flex flex-col items-center my-2  gap-5">
+        <div className="sm:text-5xl dark:text-gray-200 text-3xl font-bold flex  items-center my-2  gap-5">
           <h1>{feed === "GENERAL" ? "General" : "Customized"} feed</h1>
           <Button
-            className={cn(buttonVariants({ variant: "subtle" }))}
+            className={cn(buttonVariants({ variant: "outline" }))}
             onClick={toggleFeed}
           >
             {feed === "GENERAL"
@@ -38,7 +38,7 @@ const FeedChangeClient: FC<FeedChangeClientProps> = ({
           </Button>
         </div>
 
-        <div className="grid sm:grid-cols-9 grid-col-1  sm:order-none  gap-14   py-6">
+        <div className="grid sm:grid-cols-9 grid-col-1 mt-4  sm:order-none  gap-14   py-6">
           <ul className="flex flex-col sm:col-span-6 order-last sm:order-first space-x-8">
             {feed === "GENERAL" && children}
             {feed === "FOR YOU" && children2}

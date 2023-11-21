@@ -22,12 +22,14 @@ interface PostProps {
   subredditName: string;
   currentVote?: PartialVote;
   commentAmt: number;
+  h1?: string;
 }
 
 const Post: FC<PostProps> = ({
   post,
   votesAmt,
   currentVote,
+  h1,
   subredditName,
   commentAmt,
 }) => {
@@ -35,6 +37,9 @@ const Post: FC<PostProps> = ({
 
   return (
     <div className="rounded-md bg-white dark:bg-black dark:text-white dark:border-white dark:border-opacity-20 dark:border shadow ">
+      {h1 && (
+        <h1 className="text-gray-500 text-xs font-light px-5 py-3 ">{h1}</h1>
+      )}
       <div className="px-6 py-4 flex justify-between">
         <PostVoteClient
           postId={post.id}

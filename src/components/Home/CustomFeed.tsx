@@ -37,10 +37,16 @@ const CustomFeed = async () => {
   });
   return (
     <div>
-      <h1 className="mb-5 text-gray-800 font-light max-w-4xl text-sm px-3 py-2">
-        Join your favorite communities to get better Customized feed.
+      <h1 className="text-gray-600 sm:text-3xl text-2xl font-semibold">
+        {!session &&
+          "You need to sign-in and join your favourite communities to get this feed"}{" "}
       </h1>
-      <PostFeed initialPosts={followedPosts} />
+      {session && (
+        <PostFeed
+          initialPosts={followedPosts}
+          h1={"Post from community you have joined"}
+        />
+      )}
     </div>
   );
 };

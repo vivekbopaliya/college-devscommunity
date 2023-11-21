@@ -135,6 +135,7 @@ const SubscribeLeaveToggle: FC<SubscribeLeaveToggleProps> = ({
     <Button
       className="w-full mt-1 mb-4"
       isLoading={subLoading}
+      variant={"outline"}
       onClick={() => joinCommunity()}
     >
       Join to post

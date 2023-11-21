@@ -13,9 +13,10 @@ import { useSession } from "next-auth/react";
 interface PostFeedProps {
   initialPosts: ExtendedPosts[];
   subredditName?: string;
+  h1?: string;
 }
 
-const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
+const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName, h1 }) => {
   const { data: session } = useSession();
   // const lastPostRef = useRef<HTMLElement>(null);
   // const { ref, entry } = useIntersection({
@@ -71,6 +72,7 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
             subredditName={post.subreddit.name}
             votesAmt={votesAmt}
             currentVote={currentVote}
+            h1={h1}
           />
         );
       })}
