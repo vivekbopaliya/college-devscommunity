@@ -9,7 +9,7 @@ import axios from "axios";
 import { MessageSquare } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FC, useRef, useState } from "react";
-import { Button } from "@/components/ui/Button";
+import { Button, buttonVariants } from "@/components/ui/Button";
 import { Label } from "@/components/ui/Label";
 import { Textarea } from "@/components/ui/Textarea";
 import { useSession } from "next-auth/react";
@@ -79,17 +79,19 @@ const PostComment: FC<PostCommentProps> = ({
           className="h-6 w-6"
         />
         <div className="ml-2 flex items-center gap-x-2">
-          <p className="text-sm font-medium text-gray-900">
+          <p className="text-sm font-medium dark:text-gray-100 text-gray-900">
             u/{comment.author.name}
           </p>
 
-          <p className="max-h-40 truncate text-xs text-zinc-500">
+          <p className="max-h-40 truncate text-xs dark:text-zinc-600 text-zinc-500">
             {formatTimeToNow(new Date(comment.createdAt))}
           </p>
         </div>
       </div>
 
-      <p className="text-sm text-zinc-900 mt-2">{comment.content}</p>
+      <p className="text-sm text-zinc-900 dark:text-zinc-100 mt-2">
+        {comment.content}
+      </p>
 
       <div className="flex gap-2 items-center">
         <CommentVotes
@@ -103,7 +105,7 @@ const PostComment: FC<PostCommentProps> = ({
             if (!session) return router.push("/sign-in");
             setIsReplying(true);
           }}
-          variant="ghost"
+          className={buttonVariants()}
           size="xs"
         >
           <MessageSquare className="h-4 w-4 mr-1.5" />
@@ -112,7 +114,7 @@ const PostComment: FC<PostCommentProps> = ({
       </div>
 
       {isReplying ? (
-        <div className="grid w-full gap-1.5">
+        <div className="grid w-full mt-2 gap-1.5">
           <Label htmlFor="comment">Your comment</Label>
           <div className="mt-2">
             <Textarea

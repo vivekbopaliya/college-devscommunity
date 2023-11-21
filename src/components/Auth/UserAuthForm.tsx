@@ -28,9 +28,9 @@ const UserAuthForm = () => {
     }
   };
   return (
-    <div className={cn("justify-center flex my-3 ")}>
+    <div className={cn("justify-center flex mt-8 ")}>
       <Button
-        className="w-full "
+        className="w-full dark:bg-white dark:text-black"
         onClick={signInWithGoogle}
         isLoading={loading}
       >

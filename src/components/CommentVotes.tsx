@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/Button";
+import { Button, buttonVariants } from "@/components/ui/Button";
 import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { CommentVoteRequest, PostVoteRequest } from "@/lib/validators/vote";
@@ -77,6 +77,9 @@ const CommentVotes: FC<CommentVotesProps> = ({
       {/* upvote */}
       <Button
         onClick={() => vote("UP")}
+        className={cn({
+          "text-emerald-500": currentVote?.type === "DOWN",
+        })}
         size="xs"
         variant="ghost"
         aria-label="upvote"
@@ -89,7 +92,7 @@ const CommentVotes: FC<CommentVotesProps> = ({
       </Button>
 
       {/* score */}
-      <p className="text-center py-2 px-1 font-medium text-xs text-zinc-900">
+      <p className="text-center py-2 px-1 font-medium text-xs dark:text-zinc-100 text-zinc-900">
         {votesAmt}
       </p>
 

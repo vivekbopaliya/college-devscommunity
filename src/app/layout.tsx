@@ -21,16 +21,16 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        "bg-white text-slate-900 antialiased light",
+        "bg-white dark:bg-black dark:text-slate-100 text-slate-900 antialiased light",
         inter.className
       )}
     >
-      <body className="pt-12  min-h-screen bg-slate-50 antialiased">
+      <body className="pt-12  min-h-screen dark:bg-slate-950 bg-slate-50 antialiased">
         <QueryProvider>
           {/* @ts-ignore */}
           <Navbar />
 
-          <div className="pt-12  sm:max-w-7xl max-w-full px-3 sm:px-0 sm:container sm:mx-auto h-full">
+          <div className="pt-12  sm:max-w-7xl dark:bg-slate-950 max-w-full px-3 sm:px-0 sm:container sm:mx-auto h-full">
             {children}
           </div>
 

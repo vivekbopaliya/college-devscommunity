@@ -42,12 +42,15 @@ const UserNavbar: FC<UserNavbarProps> = ({ user }) => {
           />
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent className="bg-white" align="end">
+        <DropdownMenuContent
+          className="bg-white dark:bg-black dark:text-white"
+          align="end"
+        >
           <div className="flex  justify-start items-center gap-2 p-2">
-            <div className="flex flex-col items-center  space-y-1 leading-none">
+            <div className="flex flex-col items-center justify-center  space-y-1 leading-none">
               {user?.name && <p className="font-medium">{user?.name}</p>}
               {user?.email && (
-                <p className="text-sm text-zinc-700 truncate w-[200px]">
+                <p className="text-sm text-zinc-700 dark:text-zinc-200 truncate w-[200px]">
                   {user?.email}
                 </p>
               )}

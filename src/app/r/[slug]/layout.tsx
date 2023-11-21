@@ -8,7 +8,7 @@ import { buttonVariants } from "@/components/ui/Button";
 import SubscribeLeaveToggle from "@/components/Subreddit/SubscribeLeaveToggle";
 
 export const metadata: Metadata = {
-  title: "GDSC - AU",
+  title: "GDSC - AU | Atmiya University, Rajkot",
   description: "A community for Atmiya devs",
 };
 
@@ -58,17 +58,17 @@ const Layout = async ({
           <ul className="flex flex-col col-span-2 space-y-6">{children}</ul>
 
           {/* subreddit info */}
-          <div className="overflow-hidden h-fit rounded-lg border border-gray-200 order-first md:order-last">
-            <div className="px-6 py-4 bg-black text-white">
+          <div className="overflow-hidden h-fit rounded-lg border dark:border-opacity-20 border-gray-200 order-first md:order-last">
+            <div className="px-6 py-4 bg-black dark:bg-white dark:text-black text-white">
               <p className="font-semibold py-1  text-lg">
                 About r/{currentSubreddit?.name}
               </p>
             </div>
 
-            <dl className="divide-y divide-gray-100 px-6 py-4 text-sm leading-6 bg-white">
+            <dl className="divide-y divide-gray-100  dark:divide-gray-900 px-6 py-4 text-sm leading-6 dark:bg-black bg-white">
               <div className="flex justify-between gap-x-4 py-3">
-                <dt className="text-gray-500">Created</dt>
-                <dd className="text-gray-700 font-semibold">
+                <dt className="text-gray-500 dark:text-gray-500">Created</dt>
+                <dd className="text-gray-700 dark:text-gray-100 font-semibold">
                   <time dateTime={currentSubreddit.createdAt.toDateString()}>
                     {format(currentSubreddit.createdAt, "MMMM d, yyyy")}
                   </time>
@@ -76,16 +76,20 @@ const Layout = async ({
               </div>
 
               <div className="flex justify-between gap-x-4 py-3">
-                <dt className="text-gray-500">Members</dt>
+                <dt className="text-gray-500 dark:text-gray-500">Members</dt>
 
                 <dd className="flex items-start gap-x-2">
-                  <p className="text-gray-900 font-semibold">{memberCount}</p>
+                  <p className="text-gray-900 dark:text-gray-100 font-semibold">
+                    {memberCount}
+                  </p>
                 </dd>
               </div>
 
               {currentSubreddit.creatorId === session?.user.id ? (
                 <div className="flex justify-between gap-x-4 py-3">
-                  <dt className="text-gray-500">You created this community</dt>
+                  <dt className="text-gray-500 dark:text-gray-500">
+                    You created this community
+                  </dt>
                 </div>
               ) : null}
 
@@ -99,7 +103,6 @@ const Layout = async ({
 
               <Link
                 className={buttonVariants({
-                  variant: "outline",
                   className: "w-full mb-6",
                 })}
                 href={`/r/${slug}/submit`}

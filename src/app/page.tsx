@@ -28,10 +28,10 @@ export default async function Home() {
     <div className="container">
       <div className="w-full flex justify-center items-center  ">
         <div className="flex flex-col justify-center items-center text-center gap-4 max-w-5xl h-fit my-10">
-          <p className="text-xs font-light mb-3 rounded-lg border-opacity-30 px-3 py-2 text-slate-900 border border-slate-900 ">
+          <p className="text-xs font-light mb-3 rounded-lg border-opacity-30 px-3 py-2 dark:text-slate-100 text-slate-900 border border-slate-900 dark:border-slate-100 ">
             First time at Atmiya University
           </p>
-          <p className="sm:text-8xl text-6xl w-full text-black font-bold">
+          <p className="sm:text-8xl text-6xl w-full dark:text-white text-black font-bold">
             Google Developers Student Club
           </p>
 
@@ -54,8 +54,8 @@ export default async function Home() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4 md:gap-x-4 mt-10 py-6">
         {/* Feed */}
 
-        <div className="overflow-hidden h-fit rounded-lg border border-gray-100 order-last">
-          <div className="bg-red-100 px-6 py-4">
+        <div className="overflow-hidden h-fit dark:border-opacity-20 rounded-lg border border-gray-100  dark:border-white order-last">
+          <div className="bg-red-100 dark:bg-red-700 px-6 py-4">
             <p className="font-semibold py-3 flex items-center gap-1.5">
               <LayoutDashboardIcon />
               Dashboard
@@ -70,7 +70,9 @@ export default async function Home() {
             </div>
 
             <Link
-              className={buttonVariants({ className: "w-full mt-4 mb-6" })}
+              className={buttonVariants({
+                className: "dark:bg-white dark:text-black w-full mt-4 mb-6",
+              })}
               href="/dashboard"
             >
               Go to Dashboard
@@ -78,8 +80,8 @@ export default async function Home() {
           </div>
         </div>
         {/* Subreddit Info */}
-        <div className="overflow-hidden h-fit rounded-lg border border-gray-100 order-first ">
-          <div className="bg-emerald-100 px-6 py-4">
+        <div className="overflow-hidden dark:border-white h-fit rounded-lg border dark:border-opacity-20 border-gray-100 order-first ">
+          <div className="bg-emerald-100 dark:bg-emerald-600 px-6 py-4">
             <p className="font-semibold py-3 flex items-center gap-1.5">
               <HomeIcon />
               Communities
@@ -94,15 +96,17 @@ export default async function Home() {
             </div>
 
             <Link
-              className={buttonVariants({ className: "w-full mt-4 mb-6" })}
+              className={buttonVariants({
+                className: "dark:bg-white dark:text-black w-full mt-4 mb-6",
+              })}
               href="/r/"
             >
               Go to Communities
             </Link>
           </div>
         </div>
-        <div className="overflow-hidden h-fit rounded-lg border border-gray-100 order-2 ">
-          <div className="bg-amber-100 px-6 py-4">
+        <div className="overflow-hidden dark:border-opacity-20 dark:border-white h-fit rounded-lg border border-gray-100 order-2 ">
+          <div className="bg-amber-100 dark:bg-amber-600 px-6 py-4">
             <p className="font-semibold py-3 flex items-center gap-1.5">
               <NewspaperIcon />
               Newletters
@@ -118,7 +122,9 @@ export default async function Home() {
             </div>
 
             <Link
-              className={buttonVariants({ className: "w-full mt-4 mb-6" })}
+              className={buttonVariants({
+                className: "w-full mt-4 mb-6 dark:bg-white dark:text-black",
+              })}
               href="/n/"
             >
               Read Newsletters
@@ -133,7 +139,7 @@ export default async function Home() {
         </div>
 
         <div className="flex sm:flex flex-col sm:col-span-5  sm:gap-2 gap-5 ">
-          <p className="text-lg my-1 font-light">ABOUT US</p>
+          <p className="text-lg my-1 font-light sm:block hidden">ABOUT US</p>
           <h1 className="text-4xl font-bold my-3">
             What is <span className="text-red-500">G</span>
             <span className="text-blue-500">D</span>

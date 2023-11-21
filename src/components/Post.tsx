@@ -34,7 +34,7 @@ const Post: FC<PostProps> = ({
   const pRef = useRef<HTMLParagraphElement>(null);
 
   return (
-    <div className="rounded-md bg-white shadow ">
+    <div className="rounded-md bg-white dark:bg-black dark:text-white dark:border-white dark:border-opacity-20 dark:border shadow ">
       <div className="px-6 py-4 flex justify-between">
         <PostVoteClient
           postId={post.id}
@@ -49,7 +49,7 @@ const Post: FC<PostProps> = ({
                 <HoverCard openDelay={700}>
                   <HoverCardTrigger>
                     <Link
-                      className="underline text-zinc-900 text-sm underline-offset-2"
+                      className="underline text-zinc-900 dark:text-zinc-100 text-sm underline-offset-2"
                       href={`/r/${subredditName}`}
                     >
                       r/{subredditName}
@@ -71,7 +71,7 @@ const Post: FC<PostProps> = ({
             </span>
           </div>
           <a href={`/r/${subredditName}/post/${post.id}`}>
-            <h1 className="text-lg font-semibold py-2 max-w-3xl overflow-hidden leading-6 text-gray-900">
+            <h1 className="text-xl mt-1 mb-2 font-semibold py-2 max-w-3xl overflow-hidden leading-6 dark:text-gray-100 text-gray-900">
               {post.title}
             </h1>
           </a>
@@ -83,13 +83,13 @@ const Post: FC<PostProps> = ({
             <EditorOutput content={post.content} />
             {pRef.current?.clientHeight === 160 ? (
               // blur bottom if content is too long
-              <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-white to-transparent"></div>
+              <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-white  dark:from-black to-transparent"></div>
             ) : null}
           </div>
         </div>
       </div>
 
-      <div className="bg-gray-50 text-black z-20 text-sm px-4 py-4 sm:px-6">
+      <div className="bg-gray-50 dark:bg-zinc-900 dark:text-white text-black z-20 text-sm px-4 py-4 sm:px-6">
         <Link
           href={`/r/${subredditName}/post/${post.id}`}
           className="w-fit flex items-center gap-2"

@@ -96,13 +96,13 @@ const PostVoteClient = ({
   });
 
   return (
-    <div className="flex flex-col gap-4 sm:gap-0 pr-6 sm:w-20 pb-4 justify-center items-center sm:pb-0">
+    <div className="flex flex-col  gap-4 sm:gap-0 pr-6 sm:w-20 pb-4  items-center sm:pb-0">
       {/* upvote */}
       <HoverCard openDelay={700}>
         <HoverCardTrigger>
           <Button
             onClick={() => vote("UP")}
-            size="sm"
+            size="default"
             variant="ghost"
             aria-label="upvote"
           >
@@ -113,13 +113,13 @@ const PostVoteClient = ({
             />
           </Button>
           <HoverCardContent className="px-3 py-2 w-fit text-base">
-            Upvote
+            Upvoted
           </HoverCardContent>
         </HoverCardTrigger>
       </HoverCard>
 
       {/* score */}
-      <p className="text-center py-2 font-medium text-sm text-zinc-900">
+      <p className="text-center py-2 font-medium  dark:text-zinc-100 text-zinc-900">
         {votesAmt}
       </p>
 
@@ -128,10 +128,7 @@ const PostVoteClient = ({
         <HoverCardTrigger>
           <Button
             onClick={() => vote("DOWN")}
-            size="sm"
-            className={cn({
-              "text-emerald-500": currentVote === "DOWN",
-            })}
+            size="default"
             variant="ghost"
             aria-label="downvote"
           >
@@ -143,7 +140,7 @@ const PostVoteClient = ({
           </Button>
         </HoverCardTrigger>
         <HoverCardContent className="px-3 py-2 w-fit text-base">
-          Downvote
+          Downvoted
         </HoverCardContent>
       </HoverCard>
     </div>
