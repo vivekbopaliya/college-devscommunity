@@ -94,7 +94,7 @@ const CreateCommunity = () => {
         <div className="-my-3 divide-y dark:bg-black  px-6 py-4 text-sm leading-6">
           <div className="flex justify-between gap-x-4 py-4">
             <p className="text-zinc-500 dark:text-zinc-300">
-              Create your own community and gather people with same intrests
+              Create your own community and gather people with same interest
             </p>
           </div>
 

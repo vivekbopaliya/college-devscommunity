@@ -2,7 +2,7 @@
 
 import React, { FC, startTransition } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { Button, buttonVariants } from "../ui/Button";
+import { Button, buttonVariants } from "./ui/Button";
 import { SubscriptionPayload } from "@/lib/validators/subreddit";
 import axios, { AxiosError } from "axios";
 import { toast } from "@/hooks/use-toast";

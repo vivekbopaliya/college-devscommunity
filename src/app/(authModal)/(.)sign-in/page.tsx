@@ -1,5 +1,5 @@
 import CloseModal from "@/components/CloseModal";
-import SignIn from "@/components/Auth/SignIn";
+import SignIn from "@/components/SignIn";
 import { FC } from "react";
 
 const page: FC = () => {

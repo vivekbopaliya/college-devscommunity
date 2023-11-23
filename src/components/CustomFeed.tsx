@@ -1,9 +1,9 @@
 import { db } from "@/lib/db";
 import React from "react";
-import PostFeed from "../PostFeed";
+import PostFeed from "./PostFeed";
 import { getAuthSession } from "@/lib/auth";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config";
-import { Label } from "../ui/Label";
+import { Label } from "./ui/Label";
 
 const CustomFeed = async () => {
   const session = await getAuthSession();

@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/DropdownMenu";
+} from "./ui/DropdownMenu";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
@@ -67,7 +67,7 @@ const UserNavbar: FC<UserNavbarProps> = ({ user }) => {
           </DropdownMenuItem>
 
           <DropdownMenuItem asChild>
-            <Link href="/articles">Read articles</Link>
+            <Link href="/newsletters">Read Newsletters</Link>
           </DropdownMenuItem>
 
           <DropdownMenuSeparator />

@@ -1,14 +1,14 @@
 "use client";
 
 import React, { FC } from "react";
-import { Avatar } from "../ui/Avatar";
+import { Avatar } from "./ui/Avatar";
 import {
   AvatarFallback,
   AvatarImage,
   AvatarProps,
 } from "@radix-ui/react-avatar";
 import { User } from "next-auth";
-import { Icons } from "../ui/Icons";
+import { Icons } from "./ui/Icons";
 
 interface UserAvatarProps extends AvatarProps {
   user: Pick<User, "image" | "name">;

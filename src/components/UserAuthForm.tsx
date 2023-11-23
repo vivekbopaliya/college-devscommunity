@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { Button } from "../ui/Button";
+import { Button } from "./ui/Button";
 import { cn } from "@/lib/utils";
-import { Icons } from "../ui/Icons";
+import { Icons } from "./ui/Icons";
 import { signIn } from "next-auth/react";
 import { toast } from "@/hooks/use-toast";
 

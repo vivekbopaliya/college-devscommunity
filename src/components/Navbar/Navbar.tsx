@@ -4,7 +4,7 @@ import gdsclogo from "./gdsc-logo.png";
 import React from "react";
 import { buttonVariants } from "../ui/Button";
 import { getAuthSession } from "@/lib/auth";
-import UserNavbar from "./UserNavbar";
+import UserNavbar from "../UserNavbar";
 import SearchBar from "../SearchBar";
 import { cn } from "@/lib/utils";
 import ToggleTheme from "../ToggleTheme";

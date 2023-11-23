@@ -1,10 +1,10 @@
 "use client";
 
 import React, { FC } from "react";
-import UserAvatar from "../Navbar/UserAvatar";
+import UserAvatar from "./UserAvatar";
 import { Session } from "next-auth";
-import { Input } from "../ui/Input";
-import { Button } from "../ui/Button";
+import { Input } from "./ui/Input";
+import { Button } from "./ui/Button";
 import { ImageIcon, Link2 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 

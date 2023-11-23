@@ -5,7 +5,7 @@ import type { Post, User, Vote } from "@prisma/client";
 import { MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { FC, useRef } from "react";
-import EditorOutput from "./Subreddit/EditorOutput";
+import EditorOutput from "./EditorOutput";
 import PostVoteClient from "./post-vote/PostVoteClient";
 import { HoverCardContent, HoverCard, HoverCardTrigger } from "./ui/Hover";
 // import EditorOutput from "./EditorOutput";

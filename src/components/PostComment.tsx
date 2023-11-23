@@ -13,7 +13,7 @@ import { Button, buttonVariants } from "@/components/ui/Button";
 import { Label } from "@/components/ui/Label";
 import { Textarea } from "@/components/ui/Textarea";
 import { useSession } from "next-auth/react";
-import UserAvatar from "./Navbar/UserAvatar";
+import UserAvatar from "./UserAvatar";
 import { toast } from "@/hooks/use-toast";
 import CommentVotes from "./CommentVotes";
 

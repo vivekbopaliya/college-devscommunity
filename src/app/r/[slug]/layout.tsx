@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { getAuthSession } from "@/lib/auth";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/Button";
-import SubscribeLeaveToggle from "@/components/Subreddit/SubscribeLeaveToggle";
+import SubscribeLeaveToggle from "@/components/SubscribeLeaveToggle";
 
 export const metadata: Metadata = {
   title: "GDSC - AU | Atmiya University, Rajkot",

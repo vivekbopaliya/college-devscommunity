@@ -11,7 +11,7 @@ import {
   TableCell,
 } from "@/components/ui/Table";
 import { User } from "@prisma/client";
-import UserAvatar from "./Navbar/UserAvatar";
+import UserAvatar from "./UserAvatar";
 import { Settings2 } from "lucide-react";
 import {
   DropdownMenu,
@@ -51,87 +51,89 @@ const Dashboard: FC<DashboardProps> = ({ users }) => {
     },
   });
   return (
-    <Table className="border max-w-5xl border-gray-400 border-opacity-50 px-3 py-2">
-      <TableCaption>
-        The points have been given based on the members' performace in past GDSC
-        events.
-      </TableCaption>
-      <TableHeader>
-        <TableRow className="bg-black  ">
-          <TableHead className="sm:text-lg text-white">Rank</TableHead>
-          <TableHead className="sm:text-lg text-white">User</TableHead>
+    <div className="w-full h-full flex items-center justify-center">
+      <Table className="border  border-gray-400 border-opacity-50 px-3 py-2">
+        <TableCaption>
+          The points have been given based on the members' performace in past
+          GDSC events.
+        </TableCaption>
+        <TableHeader>
+          <TableRow className="bg-black  ">
+            <TableHead className="sm:text-lg text-white">Rank</TableHead>
+            <TableHead className="sm:text-lg text-white">User</TableHead>
 
-          <TableHead className="sm:text-lg sm:flex text-white sm:items-center hidden">
-            Gmail
-          </TableHead>
+            <TableHead className="sm:text-lg sm:flex text-white sm:items-center hidden">
+              Gmail
+            </TableHead>
 
-          <TableHead className="sm:text-lg text-white">Points</TableHead>
-        </TableRow>
-      </TableHeader>
+            <TableHead className="sm:text-lg text-white">Points</TableHead>
+          </TableRow>
+        </TableHeader>
 
-      <TableBody>
-        {users.map((user, index) => {
-          return (
-            <TableRow key={user.id}>
-              <TableCell className="font-bold  sm:text-lg">
-                #{index + 1}
-              </TableCell>
-              <TableCell>
-                <div className="flex gap-5  items-center">
-                  <UserAvatar
-                    className="sm:w-9 w-7 sm:h-9 h-7"
-                    user={{
-                      image: user.image,
-                      name: user.name,
-                    }}
-                  />
-                  <p>{user.name}</p>
-                </div>
-              </TableCell>
-              <TableCell className="sm:flex sm:h-full sm:items-center hidden">
-                {user.email}
-              </TableCell>
+        <TableBody>
+          {users.map((user, index) => {
+            return (
+              <TableRow key={user.id}>
+                <TableCell className="font-bold  sm:text-lg">
+                  #{index + 1}
+                </TableCell>
+                <TableCell>
+                  <div className="flex gap-5  items-center">
+                    <UserAvatar
+                      className="sm:w-9 w-7 sm:h-9 h-7"
+                      user={{
+                        image: user.image,
+                        name: user.name,
+                      }}
+                    />
+                    <p>{user.name}</p>
+                  </div>
+                </TableCell>
+                <TableCell className="sm:flex sm:h-full sm:items-center hidden">
+                  {user.email}
+                </TableCell>
 
-              <TableCell className="font-semibold    sm:text-lg">
-                <p className="text-blue-600 mr-4">{user.points}</p>
+                <TableCell className="font-semibold    sm:text-lg">
+                  <p className="text-blue-600 mr-4">{user.points}</p>
 
-                {session?.user.email === "gdsc.atmiya@gmail.com" && (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger>
-                      <Settings2 />
-                    </DropdownMenuTrigger>
+                  {session?.user.email === "gdsc.atmiya@gmail.com" && (
+                    <DropdownMenu>
+                      <DropdownMenuTrigger>
+                        <Settings2 />
+                      </DropdownMenuTrigger>
 
-                    <DropdownMenuContent className="bg-white " align="end">
-                      <div className="flex container py-4 mx-auto flex-col justify-between gap-3">
-                        <Label className="text-gray-500">
-                          Change the points of {user.name}
-                        </Label>
-                        <Input
-                          type="number"
-                          value={input}
-                          onChange={(e: any) => setInput(e.target.value)}
-                        />
-                        <Button
-                          isLoading={isLoading}
-                          className={cn(buttonVariants())}
-                          onClick={() => {
-                            changePoints({
-                              userId: user.id,
-                            });
-                          }}
-                        >
-                          Submit
-                        </Button>
-                      </div>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                )}
-              </TableCell>
-            </TableRow>
-          );
-        })}
-      </TableBody>
-    </Table>
+                      <DropdownMenuContent className="bg-white " align="end">
+                        <div className="flex container py-4 mx-auto flex-col justify-between gap-3">
+                          <Label className="text-gray-500">
+                            Change the points of {user.name}
+                          </Label>
+                          <Input
+                            type="number"
+                            value={input}
+                            onChange={(e: any) => setInput(e.target.value)}
+                          />
+                          <Button
+                            isLoading={isLoading}
+                            className={cn(buttonVariants())}
+                            onClick={() => {
+                              changePoints({
+                                userId: user.id,
+                              });
+                            }}
+                          >
+                            Submit
+                          </Button>
+                        </div>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  )}
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </div>
   );
 };
 
