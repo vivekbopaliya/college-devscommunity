@@ -18,38 +18,38 @@ interface PostFeedProps {
 
 const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName, h1 }) => {
   const { data: session } = useSession();
-  // const lastPostRef = useRef<HTMLElement>(null);
-  // const { ref, entry } = useIntersection({
-  //   root: lastPostRef.current,
-  //   threshold: 1,
-  // });
+  const lastPostRef = useRef<HTMLElement>(null);
+  const { ref, entry } = useIntersection({
+    root: lastPostRef.current,
+    threshold: 1,
+  });
 
-  // const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-  //   ["infinite-query"],
-  //   async ({ pageParam = 1 }) => {
-  //     const query =
-  //       `/api/posts?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}` +
-  //       (!!subredditName ? `&subredditName=${subredditName}` : "");
+  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+    ["infinite-query"],
+    async ({ pageParam = 1 }) => {
+      const query =
+        `/api/posts?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}` +
+        (!!subredditName ? `&subredditName=${subredditName}` : "");
 
-  //     const { data } = await axios.get(query);
-  //     return data as ExtendedPosts[];
-  //   },
+      const { data } = await axios.get(query);
+      return data as ExtendedPosts[];
+    },
 
-  //   {
-  //     getNextPageParam: (_, pages) => {
-  //       return pages.length + 1;
-  //     },
-  //     initialData: { pages: [initialPosts], pageParams: [1] },
-  //   }
-  // );
+    {
+      getNextPageParam: (_, pages) => {
+        return pages.length + 1;
+      },
+      initialData: { pages: [initialPosts], pageParams: [1] },
+    }
+  );
 
-  // useEffect(() => {
-  //   if (entry?.isIntersecting) {
-  //     fetchNextPage(); // Load more posts when the last post comes into view
-  //   }
-  // }, [entry, fetchNextPage]);
+  useEffect(() => {
+    if (entry?.isIntersecting) {
+      fetchNextPage(); // Load more posts when the last post comes into view
+    }
+  }, [entry, fetchNextPage]);
 
-  // const posts = data?.pages.flatMap((page) => page) ?? initialPosts;
+  const posts = data?.pages.flatMap((page) => page) ?? initialPosts;
 
   return (
     <ul className="flex flex-col col-span-2 space-y-6">

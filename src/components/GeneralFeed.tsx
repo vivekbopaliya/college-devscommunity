@@ -1,7 +1,6 @@
 import { db } from "@/lib/db";
 import React from "react";
-import PostFeed from "../PostFeed";
-import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config";
+import PostFeed from "./PostFeed";
 
 const GeneralFeed = async () => {
   const posts = await db.post.findMany({
