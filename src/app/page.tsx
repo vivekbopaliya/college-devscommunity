@@ -25,9 +25,12 @@ import SignOut from "@/components/SignOut";
 export default async function Home() {
   const session = await getAuthSession();
   return (
-    <div className="container">
-      <div className="w-full flex justify-center items-center  ">
-        <div className="flex flex-col justify-center items-center text-center gap-4 max-w-5xl h-fit my-10">
+    <div className="container   ">
+      <div className="w-full relative flex flex-col transition-bg justify-center items-center  ">
+        <div className="absolute w-screen -mt-16 inset-0 overflow-hidden">
+          <div className="jumbo absolute -inset-[10px] opacity-50"></div>
+        </div>
+        <div className="flex relative flex-col justify-center items-center text-center gap-4 max-w-5xl h-fit my-10">
           <p className="text-xs font-light mb-3 rounded-lg border-opacity-30 px-3 py-2 dark:text-slate-100 text-slate-900 border border-slate-900 dark:border-slate-100 ">
             First time at Atmiya University
           </p>
@@ -125,7 +128,7 @@ export default async function Home() {
               className={buttonVariants({
                 className: "w-full mt-4 mb-6 dark:bg-white dark:text-black",
               })}
-              href="/n/"
+              href="/newsletters"
             >
               Read Newsletters
             </Link>
