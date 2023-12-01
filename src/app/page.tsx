@@ -16,8 +16,8 @@ export default async function Home() {
   return (
     <div className="container">
       <div className="w-full relative flex  justify-center items-center">
-        <div className="absolute w-screen  flex justify-center items-center   -mt-16 inset-0 overflow-hidden">
-          <div className="jumbo absolute inset-[10px] opacity-50  "></div>
+        <div className="absolute w-screen flex justify-center items-center mr-32   -mt-16 inset-0 overflow-hidden">
+          <div className="jumbo absolute inset-[10px] opacity-50   overflow-hidden"></div>
         </div>
         <div className="flex relative flex-col justify-center items-center text-center gap-4 max-w-5xl h-fit my-10">
           <p className="text-xs font-light mb-3 rounded-lg border-opacity-30 px-3 py-2 dark:text-slate-100 text-slate-900 border border-slate-900 dark:border-slate-100 ">
