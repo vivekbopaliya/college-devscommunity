@@ -2,8 +2,8 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="w-screen h-screen flex pb-5 text-black dark:text-gray-300 flex-col justify-center items-center container">
-      <main className="max-w-6xl flex flex-col  container font-light">
+    <div className="sm:w-screen sm:h-screen w-full h-fit flex sm:pb-5 pb-5 text-black dark:text-gray-300 flex-col justify-center items-center sm:container">
+      <main className="max-w-6xl px-4 sm:px-0 flex flex-col  sm:container font-light">
         <h1 className="my-3 text-4xl font-bold dark:text-white ">
           Privacy Policy
         </h1>

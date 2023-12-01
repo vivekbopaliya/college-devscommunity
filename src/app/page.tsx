@@ -16,7 +16,7 @@ export default async function Home() {
   return (
     <div className="container">
       <div className="w-full relative flex  justify-center items-center">
-        <div className="absolute w-screen flex justify-center items-center mr-32   -mt-16 inset-0 overflow-hidden">
+        <div className="absolute w-screen flex justify-center items-center mr-32 pr-10  -mt-16 inset-0 overflow-hidden">
           <div className="jumbo absolute inset-[10px] opacity-50   overflow-hidden"></div>
         </div>
         <div className="flex relative flex-col justify-center items-center text-center gap-4 max-w-5xl h-fit my-10">
