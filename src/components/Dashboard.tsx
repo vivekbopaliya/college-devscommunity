@@ -50,6 +50,7 @@ const Dashboard: FC<DashboardProps> = ({ users }) => {
     },
     onSuccess: () => {
       router.refresh();
+      setInput(0);
     },
   });
   return (
@@ -100,9 +101,9 @@ const Dashboard: FC<DashboardProps> = ({ users }) => {
                     {user.email}
                   </TableCell>
 
-                  <TableCell className="font-semibold     sm:text-lg">
-                    <p className="text-blue-600 mr-4 flex gap-2">
-                      {user.points}
+                  <TableCell className="font-semibold     ">
+                    <p className="text-blue-600 mr-4 flex  gap-2">
+                      <span className="sm:text-lg">{user.points}</span>
 
                       {session?.user?.email === "gdsc.atmiya@gmail.com" && (
                         <DropdownMenu>

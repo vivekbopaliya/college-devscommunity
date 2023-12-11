@@ -77,7 +77,7 @@ export default async function Home() {
             {" "}
             <span className="text-red-500">G</span>et
             <span className="text-blue-500"> I</span>n{" "}
-            <span className="text-green-500">T</span>ouch
+            <span className="text-green-500">T</span>ouc
             <span className="text-yellow-500">H</span>
           </h1>
 
