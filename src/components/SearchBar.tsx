@@ -16,7 +16,7 @@ import {
   CommandList,
 } from "@/components/ui/Command";
 import { useOnClickOutside } from "@/hooks/use-on-click-outside";
-import { Users } from "lucide-react";
+import { Loader2Icon, Users } from "lucide-react";
 
 interface SearchBarProps {}
 
@@ -78,6 +78,9 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
 
       {input.length > 0 && (
         <CommandList className="absolute dark:bg-black  bg-white top-full inset-x-0 shadow rounded-b-md">
+          <div className="flex justify-center items-center h-full w-full mt-3">
+            {isFetching && <Loader2Icon className="animate-spin w-6   h-6" />}
+          </div>
           {isFetched && <CommandEmpty>No results found.</CommandEmpty>}
           {(queryResults?.length ?? 0) > 0 ? (
             <CommandGroup heading="Communities">

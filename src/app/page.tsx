@@ -1,8 +1,5 @@
 import { getAuthSession } from "@/lib/auth";
-
 import Image from "next/image";
-import Link from "next/link";
-
 import photo from "@/components/Navbar/photo.jpeg";
 import SignOut from "@/components/SignOut";
 import YourFeedLink from "@/components/Home/YourFeedLink";
@@ -14,10 +11,10 @@ import SocialMedia from "@/components/Home/SocialMedia";
 export default async function Home() {
   const session = await getAuthSession();
   return (
-    <div className="container">
+    <div className="container pb-5">
       <div className="w-full relative flex  justify-center items-center">
-        <div className="absolute w-screen flex justify-center items-center mr-32 pr-10  -mt-16 inset-0 overflow-hidden">
-          <div className="jumbo absolute inset-[10px] opacity-50   overflow-hidden"></div>
+        <div className="absolute w-full sm:ml-[150px]  ml-16   -mt-16 inset-0 overflow-hidden">
+          <div className="jumbo absolute inset-[10px] opacity-50   overflow-hidden "></div>
         </div>
         <div className="flex relative flex-col justify-center items-center text-center gap-4 max-w-5xl h-fit my-10">
           <p className="text-xs font-light mb-3 rounded-lg border-opacity-30 px-3 py-2 dark:text-slate-100 text-slate-900 border border-slate-900 dark:border-slate-100 ">
@@ -54,7 +51,7 @@ export default async function Home() {
             What is <span className="text-red-500">G</span>
             <span className="text-blue-500">D</span>
             <span className="text-green-500">S</span>
-            <span className="text-yellow-500">C</span> & why shoud you care?
+            <span className="text-yellow-500">C</span> & why should you care?
           </h1>
           <div className="flex flex-col justify-center items-center">
             <p className=" text-center dark:text-gray-200  my-4">
@@ -80,7 +77,7 @@ export default async function Home() {
             {" "}
             <span className="text-red-500">G</span>et
             <span className="text-blue-500"> I</span>n{" "}
-            <span className="text-green-500">T</span>ocu
+            <span className="text-green-500">T</span>ouch
             <span className="text-yellow-500">H</span>
           </h1>
 

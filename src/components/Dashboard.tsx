@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC } from "react";
+import React, { ChangeEventHandler, FC } from "react";
 import {
   TableCaption,
   Table,
@@ -29,25 +29,27 @@ import Link from "next/link";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { Session } from "next-auth";
 
 interface DashboardProps {
   users: User[];
 }
 const Dashboard: FC<DashboardProps> = ({ users }) => {
   const [input, setInput] = React.useState<number>(0);
+
   const { data: session } = useSession();
-
-  console.log(input);
-
   const router = useRouter();
 
   const { mutate: changePoints, isLoading } = useMutation({
-    mutationFn: async ({ userId }: any) => {
+    mutationFn: async ({ userId, point }: PointRequest) => {
       const payload: PointRequest = {
-        point: input,
+        point,
         userId,
       };
-      await axios.patch("/api/points", payload);
+      await axios.put("/api/points", payload);
+    },
+    onSuccess: () => {
+      router.refresh();
     },
   });
   return (
@@ -71,66 +73,82 @@ const Dashboard: FC<DashboardProps> = ({ users }) => {
         </TableHeader>
 
         <TableBody>
-          {users.map((user, index) => {
-            return (
-              <TableRow key={user.id}>
-                <TableCell className="font-bold  sm:text-lg">
-                  #{index + 1}
-                </TableCell>
-                <TableCell>
-                  <div className="flex gap-5  items-center">
-                    <UserAvatar
-                      className="sm:w-9 w-7 sm:h-9 h-7"
-                      user={{
-                        image: user.image,
-                        name: user.name,
-                      }}
-                    />
-                    <p>{user.name}</p>
-                  </div>
-                </TableCell>
-                <TableCell className="sm:flex sm:h-full sm:items-center hidden">
-                  {user.email}
-                </TableCell>
+          {users
 
-                <TableCell className="font-semibold    sm:text-lg">
-                  <p className="text-blue-600 mr-4">{user.points}</p>
+            .filter((user) => {
+              return user.role === "User";
+            })
+            .map((user, index) => {
+              return (
+                <TableRow key={user.id}>
+                  <TableCell className="font-bold  sm:text-lg">
+                    #{index + 1}
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex gap-5  items-center">
+                      <UserAvatar
+                        className="sm:w-9 w-7 sm:h-9 h-7"
+                        user={{
+                          image: user.image,
+                          name: user.name,
+                        }}
+                      />
+                      <p>{user.name}</p>
+                    </div>
+                  </TableCell>
+                  <TableCell className="sm:flex sm:h-full sm:items-center hidden">
+                    {user.email}
+                  </TableCell>
 
-                  {session?.user.email === "gdsc.atmiya@gmail.com" && (
-                    <DropdownMenu>
-                      <DropdownMenuTrigger>
-                        <Settings2 />
-                      </DropdownMenuTrigger>
+                  <TableCell className="font-semibold     sm:text-lg">
+                    <p className="text-blue-600 mr-4 flex gap-2">
+                      {user.points}
 
-                      <DropdownMenuContent className="bg-white " align="end">
-                        <div className="flex container py-4 mx-auto flex-col justify-between gap-3">
-                          <Label className="text-gray-500">
-                            Change the points of {user.name}
-                          </Label>
-                          <Input
-                            type="number"
-                            value={input}
-                            onChange={(e: any) => setInput(e.target.value)}
-                          />
-                          <Button
-                            isLoading={isLoading}
-                            className={cn(buttonVariants())}
-                            onClick={() => {
-                              changePoints({
-                                userId: user.id,
-                              });
-                            }}
+                      {session?.user?.email === "gdsc.atmiya@gmail.com" && (
+                        <DropdownMenu>
+                          <DropdownMenuTrigger>
+                            <Settings2 size={"sm"} />
+                          </DropdownMenuTrigger>
+
+                          <DropdownMenuContent
+                            className="bg-white  dark:text-black"
+                            align="end"
                           >
-                            Submit
-                          </Button>
-                        </div>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  )}
-                </TableCell>
-              </TableRow>
-            );
-          })}
+                            <div className="flex container py-3 px-4 mx-auto flex-col justify-between gap-3">
+                              <Label className="text-gray-500 font-light">
+                                Change the points of{" "}
+                                <span className="text-gray-800 font-semibold">
+                                  {user.name}
+                                </span>
+                              </Label>
+                              <Input
+                                type="number"
+                                onChange={(e: any) =>
+                                  setInput(parseInt(e.target.value, 10))
+                                }
+                              />
+                              <Button
+                                size={"sm"}
+                                isLoading={isLoading}
+                                className={cn(buttonVariants())}
+                                onClick={() => {
+                                  changePoints({
+                                    userId: user.id,
+                                    point: input,
+                                  });
+                                }}
+                              >
+                                Submit
+                              </Button>
+                            </div>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      )}
+                    </p>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
         </TableBody>
       </Table>
     </div>

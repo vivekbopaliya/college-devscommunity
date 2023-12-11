@@ -53,7 +53,7 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName, h1 }) => {
 
   return (
     <ul className="flex flex-col col-span-2 space-y-6">
-      {initialPosts.map((post, index) => {
+      {posts.map((post, index) => {
         const votesAmt = post.votes.reduce((acc, vote) => {
           if (vote.type === "UP") return acc + 1;
           if (vote.type === "DOWN") return acc - 1;
@@ -64,20 +64,38 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName, h1 }) => {
           (vote) => vote.userId === session?.user.id
         );
 
-        return (
-          <Post
-            key={post.id}
-            post={post}
-            commentAmt={post.comments.length}
-            subredditName={post.subreddit.name}
-            votesAmt={votesAmt}
-            currentVote={currentVote}
-            h1={h1}
-          />
-        );
+        if (index === posts.length - 1) {
+          // Add a ref to the last post in the list
+          return (
+            <li key={post.id} ref={ref}>
+              <Post
+                post={post}
+                commentAmt={post.comments.length}
+                subredditName={post.subreddit.name}
+                votesAmt={votesAmt}
+                currentVote={currentVote}
+              />
+            </li>
+          );
+        } else {
+          return (
+            <Post
+              key={post.id}
+              post={post}
+              commentAmt={post.comments.length}
+              subredditName={post.subreddit.name}
+              votesAmt={votesAmt}
+              currentVote={currentVote}
+            />
+          );
+        }
       })}
+      {isFetchingNextPage && (
+        <li className="flex justify-center">
+          <Loader2 className="w-6 h-6 text-zinc-500 animate-spin" />
+        </li>
+      )}
     </ul>
   );
 };
-
 export default PostFeed;

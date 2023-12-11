@@ -1,3 +1,4 @@
+import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { z } from "zod";
@@ -17,6 +18,7 @@ export async function GET(req: Request) {
       include: {
         subreddit: true,
       },
+      take: INFINITE_SCROLL_PAGINATION_RESULTS,
     });
 
     followedCommunitiesIds = followedCommunities.map((sub) => sub.subreddit.id);
