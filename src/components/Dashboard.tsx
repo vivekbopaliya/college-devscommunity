@@ -108,7 +108,7 @@ const Dashboard: FC<DashboardProps> = ({ users }) => {
                       {session?.user?.email === "gdsc.atmiya@gmail.com" && (
                         <DropdownMenu>
                           <DropdownMenuTrigger>
-                            <Settings2 size={"sm"} />
+                            <Settings2 className="w-5 h-5" />
                           </DropdownMenuTrigger>
 
                           <DropdownMenuContent

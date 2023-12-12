@@ -54,7 +54,7 @@ const Post: FC<PostProps> = ({
                 <HoverCard openDelay={700}>
                   <HoverCardTrigger>
                     <Link
-                      className="underline text-zinc-900 dark:text-zinc-100 text-sm underline-offset-2"
+                      className="underline  dark:text-blue-600 text-blue-400 text-sm underline-offset-2"
                       href={`/r/${subredditName}`}
                     >
                       r/{subredditName}
@@ -69,9 +69,11 @@ const Post: FC<PostProps> = ({
             ) : null}
             <span className="mx-1">
               Posted by u/
-              <span className="font-bold">{post.author.name}</span>
+              <span>{post.author.name}</span>
             </span>
-            <span className="ml-3">
+            <span className="px-1 mx-1">•</span>
+
+            <span className="ml-1">
               {formatTimeToNow(new Date(post.createdAt))}
             </span>
           </div>
@@ -88,7 +90,7 @@ const Post: FC<PostProps> = ({
             <EditorOutput content={post.content} />
             {pRef.current?.clientHeight === 160 ? (
               // blur bottom if content is too long
-              <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-white  dark:from-black to-transparent"></div>
+              <div className="absolute bottom-0 left-0 h-24 w-full sm:bg-gradient-to-t sm:from-white  dark:sm:from-black sm:to-transparent"></div>
             ) : null}
           </div>
         </div>

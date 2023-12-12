@@ -16,7 +16,7 @@ import {
   CommandList,
 } from "@/components/ui/Command";
 import { useOnClickOutside } from "@/hooks/use-on-click-outside";
-import { Loader2Icon, Users } from "lucide-react";
+import { Link, Loader2Icon, Users } from "lucide-react";
 
 interface SearchBarProps {}
 
@@ -94,7 +94,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
                   value={subreddit.name}
                 >
                   <Users className="mr-2 h-4 w-4" />
-                  <a href={`/r/${subreddit.name}`}>r/{subreddit.name}</a>
+                  <Link href={`/r/${subreddit.name}`}>r/{subreddit.name}</Link>
                 </CommandItem>
               ))}
             </CommandGroup>

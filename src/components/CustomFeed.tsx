@@ -4,6 +4,7 @@ import PostFeed from "./PostFeed";
 import { getAuthSession } from "@/lib/auth";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config";
 import { Label } from "./ui/Label";
+import { InfoIcon } from "lucide-react";
 
 const CustomFeed = async () => {
   const session = await getAuthSession();
@@ -37,9 +38,10 @@ const CustomFeed = async () => {
   });
   return (
     <div>
-      <h1 className="text-gray-600 sm:text-3xl text-2xl font-semibold">
-        {!session &&
-          "You need to sign-in and join your favourite communities to get this feed"}{" "}
+      <h1 className="text-gray-600 flex gap-2  text-xl font-extralight">
+        <InfoIcon />
+        {(!session || !followedCommunites) &&
+          "You need to sign-in and join your favourite communities to get this feed."}{" "}
       </h1>
       {session && (
         <PostFeed
