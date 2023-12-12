@@ -84,11 +84,7 @@ const CreateCommunity = () => {
   return (
     <div>
       <Dialog>
-        <DialogTrigger
-          className={cn(buttonVariants(), "mt-4 dark:mb-5 w-full")}
-        >
-          Create Community
-        </DialogTrigger>
+        <DialogTrigger>Create Community</DialogTrigger>
         <DialogContent className=" bg-white dark:bg-black rounded-lg">
           <DialogHeader>
             <h1 className="font-bold text-2xl">Create a community</h1>
