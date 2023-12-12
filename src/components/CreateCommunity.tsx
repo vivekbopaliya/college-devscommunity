@@ -83,69 +83,52 @@ const CreateCommunity = () => {
   });
   return (
     <div>
-      <div className="overflow-hidden h-fit  rounded-lg border dark:border-opacity-20 border-gray-100 order-1 ">
-        <div className="bg-black dark:bg-white dark:pb-4 px-6 py-4">
-          <p className="font-semibold py-3 text-white dark:text-black flex items-center gap-1.5">
-            <UserPlus className="dark:fill-black" />
-            Create your community
-          </p>
-        </div>
+      <Dialog>
+        <DialogTrigger
+          className={cn(buttonVariants(), "mt-4 dark:mb-5 w-full")}
+        >
+          Create Community
+        </DialogTrigger>
+        <DialogContent className=" bg-white dark:bg-black rounded-lg">
+          <DialogHeader>
+            <h1 className="font-bold text-2xl">Create a community</h1>
+          </DialogHeader>
 
-        <div className="-my-3 divide-y dark:bg-black  px-6 py-4 text-sm leading-6">
-          <div className="flex justify-between gap-x-4 py-4">
-            <p className="text-zinc-500 dark:text-zinc-300">
-              Create your own community and gather people with same interest
-            </p>
-          </div>
+          <DialogDescription>
+            <div className="flex flex-col ">
+              <p className="font-semibold text-lg ">Name</p>
+              <p className="text-xs">
+                Community name including capitalization cannot be changed
+              </p>
+            </div>
+            <div className="relative">
+              <p className="absolute grid w-8 text-zinc-500 dark:text-zinc-300 inset-y-0 place-items-center">
+                r/
+              </p>
+              <Input
+                className="pl-6 mt-4 text-black dark:text-white"
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </div>
+            <div className="flex justify-end gap-4 mt-5">
+              <DialogClose>
+                <Button className={buttonVariants()}>Cancel</Button>
+              </DialogClose>
 
-          <Dialog>
-            <DialogTrigger
-              className={cn(buttonVariants(), "mt-4 dark:mb-5 w-full")}
-            >
-              Create Community
-            </DialogTrigger>
-            <DialogContent className=" bg-white dark:bg-black rounded-lg">
-              <DialogHeader>
-                <h1 className="font-bold text-2xl">Create a community</h1>
-              </DialogHeader>
-
-              <DialogDescription>
-                <div className="flex flex-col ">
-                  <p className="font-semibold text-lg ">Name</p>
-                  <p className="text-xs">
-                    Community name including capitalization cannot be changed
-                  </p>
-                </div>
-                <div className="relative">
-                  <p className="absolute grid w-8 text-zinc-500 dark:text-zinc-300 inset-y-0 place-items-center">
-                    r/
-                  </p>
-                  <Input
-                    className="pl-6 mt-4 text-black dark:text-white"
-                    onChange={(e) => setInput(e.target.value)}
-                  />
-                </div>
-                <div className="flex justify-end gap-4 mt-5">
-                  <DialogClose>
-                    <Button className={buttonVariants()}>Cancel</Button>
-                  </DialogClose>
-
-                  <Button
-                    isLoading={isLoading}
-                    className={cn(
-                      buttonVariants(),
-                      "dark:text-black dark:bg-white dark:hover:text-black"
-                    )}
-                    onClick={() => createSubreddit()}
-                  >
-                    Create Community
-                  </Button>
-                </div>
-              </DialogDescription>
-            </DialogContent>
-          </Dialog>
-        </div>
-      </div>
+              <Button
+                isLoading={isLoading}
+                className={cn(
+                  buttonVariants(),
+                  "dark:text-black dark:bg-white dark:hover:text-black"
+                )}
+                onClick={() => createSubreddit()}
+              >
+                Create Community
+              </Button>
+            </div>
+          </DialogDescription>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
