@@ -39,7 +39,7 @@ const CustomFeed = async () => {
   return (
     <div>
       <h1 className="text-gray-600 flex gap-2  text-xl font-extralight">
-        <InfoIcon />
+        {(!session || !followedCommunites) && <InfoIcon />}
         {(!session || !followedCommunites) &&
           "You need to sign-in and join your favourite communities to get this feed."}{" "}
       </h1>
