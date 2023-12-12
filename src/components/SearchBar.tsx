@@ -16,7 +16,8 @@ import {
   CommandList,
 } from "@/components/ui/Command";
 import { useOnClickOutside } from "@/hooks/use-on-click-outside";
-import { Link, Loader2Icon, Users } from "lucide-react";
+import { Loader2Icon, Users } from "lucide-react";
+import Link from "next/link";
 
 interface SearchBarProps {}
 
