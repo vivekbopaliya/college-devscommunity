@@ -12,9 +12,11 @@ import { toast } from "@/hooks/use-toast";
 import { uploadFiles } from "@/lib/uploadthing";
 import { PostCreationRequest, PostValidator } from "@/lib/validators/post";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 import "@/styles/editor.css";
+import Link from "next/link";
+import { buttonVariants } from "./ui/Button";
 
 type FormData = z.infer<typeof PostValidator>;
 
@@ -41,7 +43,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const pathname = usePathname();
 
-  const { mutate: createPost } = useMutation({
+  const { mutate: createPost, isLoading } = useMutation({
     mutationFn: async ({
       title,
       content,
@@ -51,7 +53,29 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       const { data } = await axios.post("/api/subreddit/post/create", payload);
       return data;
     },
-    onError: () => {
+    onError: (err) => {
+      if (err instanceof AxiosError) {
+        if (err.response?.status === 401) {
+          const loginToast = () => {
+            const { dismiss } = toast({
+              title: "Login required.",
+              description: "You need to be logged in to do that.",
+              variant: "destructive",
+              action: (
+                <Link
+                  href="/sign-in"
+                  onClick={() => dismiss()}
+                  className={buttonVariants({ variant: "outline" })}
+                >
+                  Login
+                </Link>
+              ),
+            });
+          };
+
+          return loginToast();
+        }
+      }
       return toast({
         title: "Something went wrong.",
         description: "Your post was not published. Please try again.",
@@ -66,7 +90,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       router.refresh();
 
       return toast({
-        description: "Your post has been published.",
+        description: "Your post is being published, wait for a moment...",
       });
     },
   });

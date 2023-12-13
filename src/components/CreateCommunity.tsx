@@ -84,7 +84,7 @@ const CreateCommunity = () => {
   return (
     <div>
       <Dialog>
-        <DialogTrigger className="my-2 mx-2 text-sm hover:bg-gray-100/70">
+        <DialogTrigger className="my-2 mx-2 text-sm ">
           Create a community
         </DialogTrigger>
         <DialogContent className=" bg-white dark:bg-black rounded-lg">
