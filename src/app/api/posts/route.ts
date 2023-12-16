@@ -17,6 +17,15 @@ export async function GET(req: Request) {
         limit: url.searchParams.get("limit"),
         page: url.searchParams.get("page"),
       });
+    let whereClause = {};
+
+    if (subredditName) {
+      whereClause = {
+        subreddit: {
+          name: subredditName,
+        },
+      };
+    }
 
     const posts = await db.post.findMany({
       take: parseInt(limit),
@@ -30,6 +39,7 @@ export async function GET(req: Request) {
         author: true,
         comments: true,
       },
+      where: whereClause,
     });
 
     return new Response(JSON.stringify(posts));
