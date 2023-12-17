@@ -58,9 +58,6 @@ const UserNavbar: FC<UserNavbarProps> = ({ user }) => {
           <Link href="/newsletters">Read Newsletters</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <CreateCommunity />
-        </DropdownMenuItem>
 
         <DropdownMenuItem
           className="cursor-pointer"
@@ -72,6 +69,9 @@ const UserNavbar: FC<UserNavbarProps> = ({ user }) => {
           }}
         >
           Sign out
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <CreateCommunity />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
