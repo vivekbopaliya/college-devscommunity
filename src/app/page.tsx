@@ -25,7 +25,7 @@ export default async function Home() {
           </p>
 
           <p className="text-slate-500  sm:text-2xl text-xl">
-            Connect. Interact. Learn. Grow.
+            For the Developers, by the Developers.
           </p>
 
           <div className="flex gap-3 mt-5">
