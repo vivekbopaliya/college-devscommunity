@@ -59,6 +59,10 @@ const UserNavbar: FC<UserNavbarProps> = ({ user }) => {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
 
+        <DropdownMenuItem asChild>
+          <Link href="/r/create">Create community</Link>
+        </DropdownMenuItem>
+
         <DropdownMenuItem
           className="cursor-pointer"
           onSelect={(e) => {
@@ -69,9 +73,6 @@ const UserNavbar: FC<UserNavbarProps> = ({ user }) => {
           }}
         >
           Sign out
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <CreateCommunity />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

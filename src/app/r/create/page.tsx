@@ -73,11 +73,11 @@ const Page = () => {
   });
 
   return (
-    <div className="max-w-2xl mx-auto flex items-center  h-fit inset-0 py-2 bg-white rounded-lg ">
+    <div className="max-w-2xl mx-auto flex items-center  h-fit inset-0 py-2 dark:bg-black dark:text-white bg-white rounded-lg ">
       <div className="relative flex flex-col gap-4 w-full px-5 py-3">
         <h1 className="font-semibold text-lg">Create a community</h1>
 
-        <hr className="bg-zinc-500 h-px" />
+        <hr className="bg-zinc-500 dark:bg-zinc-700 h-px" />
         <div className="flex flex-col ">
           <p className="font-semibold ">Name</p>
           <p className="text-xs">
@@ -86,7 +86,7 @@ const Page = () => {
         </div>
 
         <div className="relative">
-          <p className="absolute grid w-8 text-zinc-500 inset-y-0 place-items-center">
+          <p className="absolute grid w-8 text-zinc-500 dark:text-zinc-200 inset-y-0 place-items-center">
             r/
           </p>
           <Input
@@ -100,6 +100,7 @@ const Page = () => {
 
         <div className="flex justify-end gap-4">
           <Button
+            className="dark:text-white dark:hover:bg-transparent"
             variant="ghost"
             onClick={() => {
               route.push("/");
@@ -109,6 +110,7 @@ const Page = () => {
           </Button>
 
           <Button
+            className="dark:bg-white dark:text-black"
             onClick={() => createSubreddit()}
             disabled={input.length === 0}
             isLoading={isLoading}
