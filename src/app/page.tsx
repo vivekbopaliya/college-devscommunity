@@ -7,6 +7,8 @@ import NavigationCharts from "@/components/Home/NavigationCharts";
 import JoinGDSC from "@/components/Home/JoinGDSC";
 import FAQs from "@/components/Home/FAQs";
 import SocialMedia from "@/components/Home/SocialMedia";
+import { AlignRightIcon } from "lucide-react";
+import Link from "next/link";
 
 export default async function Home() {
   const session = await getAuthSession();
@@ -17,9 +19,14 @@ export default async function Home() {
           <div className="jumbo absolute inset-[10px] opacity-50   overflow-hidden "></div>
         </div>
         <div className="flex relative flex-col justify-center items-center text-center gap-4 max-w-5xl h-fit my-10">
-          <p className="text-xs font-light mb-3 rounded-lg border-opacity-30 px-3 py-2 dark:text-slate-100 text-slate-900 border border-slate-900 dark:border-slate-100 ">
-            First time at Atmiya University
-          </p>
+          <Link href="/hackathon">
+            <div className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium">
+              🎉
+              <span className="hidden sm:inline">
+                Learn about upcoming hackathon
+              </span>
+            </div>
+          </Link>
           <p className="sm:text-8xl text-6xl w-full dark:text-white text-black font-bold">
             Google Developers Student Club
           </p>

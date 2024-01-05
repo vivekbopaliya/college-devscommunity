@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+* {
+  font-family: 'Inter', sans-serif;
+}
 
 @keyframes jumbo {
     from {
@@ -11,6 +14,60 @@
     to {
         background-position: 350% 50%, 350% 50%;
     }
+}
+
+@font-face {
+  src: url("https://www.axis-praxis.org/fonts/webfonts/MetaVariableDemo-Set.woff2")
+    format("woff2");
+  font-family: "Meta";
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+.heckathon {
+  transition: all 0.5s;
+  -webkit-text-stroke: 4px #d6f4f4;
+  font-variation-settings: "wght" 900, "ital" 1;
+  font-size: 9rem;
+  text-align: center;
+  color: transparent;
+  font-family: "Meta", sans-serif;
+  text-shadow: 10px 10px 0px blue,
+    15px 15px 0px black,
+    20px 20px 0px green;
+}
+
+
+.heckathon:hover {
+  font-variation-settings: "wght" 100, "ital" 0;
+  text-shadow: none;
+}
+
+
+
+.heckathon-phone{
+  font-family: 'DotGothic16', sans-serif;
+}
+.circle-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.circle-list li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.circle-list li::before {
+  content: "\2022"; /* Unicode character for a bullet point */
+  color: #007bff; /* Change the color as needed */
+  font-size: 1.5em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .jumbo {
@@ -69,6 +126,7 @@
 }
 
 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -92,7 +150,7 @@
     --ring: 240 5.9% 10%;
     --radius: 0.5rem;
   }
- 
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -134,4 +192,44 @@
 ::selection {
   color: black;
   background: greenyellow;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:100);
+
+:root {
+  --text-color: #f00;
+  --border-color: #3da7f8;
+  --animation-time: 1s;
+  --text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 5px var(--text-color),
+    0 0 10px var(--text-color), 0 0 10px var(--text-color),
+    0 0 10px var(--text-color), 0 0 10px var(--text-color),
+    0 0 20px var(--text-color), 0 0 30px var(--text-color),
+    0 0 40px var(--text-color), 0 0 55px var(--text-color),
+    0 0 75px var(--text-color);
+  --box-shadow: inset 0 0 50px var(--border-color), 0 0 10px var(--border-color),
+    0 0 20px var(--border-color), 0 0 30px var(--border-color);
+}
+
+
+
+
+
+
+@keyframes flicker {
+  0% {
+    text-shadow: var(--text-shadow);
+  }
+  99% {
+    text-shadow: none;
+  }
+}
+
+@keyframes flickerBorder {
+  0% {
+    box-shadow: var(--box-shadow);
+  }
+  99% {
+    box-shadow: none;
+  }
 }
