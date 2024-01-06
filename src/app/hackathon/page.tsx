@@ -94,7 +94,7 @@ const page = () => {
                 </DrawerHeader>
               </div>
             </DrawerContent>
-            <Button size={"lg"}>Register</Button>
+            <Button size={"lg"}>Register Now</Button>
           </Drawer>
         </main>
       </div>

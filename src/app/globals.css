@@ -16,13 +16,7 @@
     }
 }
 
-@font-face {
-  src: url("https://www.axis-praxis.org/fonts/webfonts/MetaVariableDemo-Set.woff2")
-    format("woff2");
-  font-family: "Meta";
-  font-style: normal;
-  font-weight: normal;
-}
+
 
 
 .heckathon {
@@ -196,20 +190,6 @@
 
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:100);
-
-:root {
-  --text-color: #f00;
-  --border-color: #3da7f8;
-  --animation-time: 1s;
-  --text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 5px var(--text-color),
-    0 0 10px var(--text-color), 0 0 10px var(--text-color),
-    0 0 10px var(--text-color), 0 0 10px var(--text-color),
-    0 0 20px var(--text-color), 0 0 30px var(--text-color),
-    0 0 40px var(--text-color), 0 0 55px var(--text-color),
-    0 0 75px var(--text-color);
-  --box-shadow: inset 0 0 50px var(--border-color), 0 0 10px var(--border-color),
-    0 0 20px var(--border-color), 0 0 30px var(--border-color);
-}
 
 
 
