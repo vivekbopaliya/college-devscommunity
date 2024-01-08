@@ -9,6 +9,8 @@ import FAQs from "@/components/Home/FAQs";
 import SocialMedia from "@/components/Home/SocialMedia";
 import { AlignRightIcon } from "lucide-react";
 import Link from "next/link";
+import { Separator } from "@/components/ui/Seperator";
+import Footer from "@/components/Footer";
 
 export default async function Home() {
   const session = await getAuthSession();
@@ -23,7 +25,7 @@ export default async function Home() {
             <div className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium">
               🎉
               <span className="hidden sm:inline">
-                Learn about upcoming hackathon
+                Know about upcoming hackathon
               </span>
             </div>
           </Link>
@@ -76,7 +78,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="w-full flex justify-center items-center    z-0">
+      <div className="w-full flex justify-center items-center  pt-14  z-0">
         <div className=" max-w-3xl flex flex-col justify-center items-center ">
           <h1 className=" text-lg font-light">FAQs</h1>
 
@@ -92,9 +94,9 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="flex mt-10 justify-center items-center">
-        <SocialMedia />
-      </div>
+      {/* <div className="pt-28 pb-5 -ml-40 w-screen h-full">
+        <Footer />
+      </div> */}
     </div>
   );
 }
