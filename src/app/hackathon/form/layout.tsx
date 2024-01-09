@@ -24,10 +24,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
               Register for Code Carnival
             </h2>
             <p className="text-muted-foreground">
-              Kindly read{" "}
-              <span className="text-blue-600 hover:underline">
-                rules & regulations
-              </span>
+              Kindly read <span>rules & regulations</span>
               before filling the form.
             </p>
           </div>
