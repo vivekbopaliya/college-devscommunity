@@ -1,8 +1,5 @@
 import { Metadata } from "next";
-import Image from "next/image";
-
 import { Separator } from "@/components/ui/Seperator";
-import { SidebarNav } from "./sidebar-nav";
 import { BadgeAlert } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -24,10 +21,14 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
           </div>
           <div className="space-y-0.5">
             <h2 className="text-2xl text-blue-600 font-bold tracking-tight">
-              Register for Hackathon
+              Register for Code Carnival
             </h2>
             <p className="text-muted-foreground">
-              Kindly read rules & regulations before filling the form.
+              Kindly read{" "}
+              <span className="text-blue-600 hover:underline">
+                rules & regulations
+              </span>
+              before filling the form.
             </p>
           </div>
         </div>
