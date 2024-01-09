@@ -27,7 +27,7 @@ const page = () => {
           <p className="text-6xl  heckathon">CODE </p>
           <p className="text-6xl  heckathon">CARNIVAL</p>
           <p className="text-slate-500 mt-4 headline  sm:text-2xl text-xl">
-            Where ideas find codes.
+            Where Ideas find Code.
           </p>
         </main>
 
