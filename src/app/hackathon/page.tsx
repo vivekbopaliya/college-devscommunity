@@ -46,7 +46,7 @@ const page = () => {
             </DrawerTrigger>
 
             <DrawerContent>
-              <div className="mx-auto w-full max-w-lg">
+              <div className="mx-auto w-full max-w-xl">
                 <DrawerHeader>
                   <DrawerTitle>Open Hackathon</DrawerTitle>
                   <DrawerDescription>
@@ -77,6 +77,13 @@ const page = () => {
                       <li>
                         We, the organizers have the right to disqualify the
                         teams if the rules and regulations are violated.
+                      </li>
+
+                      <li>
+                        No outsiders are allowed in the hackathon. You cannot
+                        take help from other teams or the people who haven't
+                        participated in the hackathon. This will lead to the
+                        disqualification of the team
                       </li>
                       <li>
                         Winning teams will receive thrilling prizes and

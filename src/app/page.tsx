@@ -7,15 +7,17 @@ import NavigationCharts from "@/components/Home/NavigationCharts";
 import JoinGDSC from "@/components/Home/JoinGDSC";
 import FAQs from "@/components/Home/FAQs";
 import SocialMedia from "@/components/Home/SocialMedia";
-import { AlignRightIcon } from "lucide-react";
+import { AlignRightIcon, GithubIcon } from "lucide-react";
 import Link from "next/link";
-import { Separator } from "@/components/ui/Seperator";
-import Footer from "@/components/Footer";
+import whatsapplogo from "../components/whatsapp-logo.png";
+import emailogo from "../components/email-logo.png";
+import gdsc_au from "../components/gdsclogo.png";
+import instagramlogo from "../components/instragram-logo.png";
 
 export default async function Home() {
   const session = await getAuthSession();
   return (
-    <div className="container pb-5">
+    <div className="container ">
       <div className="w-full relative flex  justify-center items-center">
         <div className="absolute w-full sm:ml-[150px]  ml-20   -mt-16 inset-0 overflow-hidden">
           <div className="jumbo absolute inset-[10px] opacity-50   overflow-hidden "></div>
@@ -94,9 +96,79 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* <div className="pt-28 pb-5 -ml-40 w-screen h-full">
-        <Footer />
-      </div> */}
+      <div className="pt-28  sm:-ml-40 -ml-14 w-screen h-full">
+        <div className="py-4 h-full flex  pb-5 justify-around items-center  dark:bg-slate-900 dark:text-white bg-black text-white">
+          <main className="flex-col sm:flex  hidden justify-center items-start  ">
+            {/* <Image
+              src={gdsc_au}
+              alt="Atmiyalogo"
+              className="w-32  h-32    my-2 object-contain"
+            /> */}
+
+            <p className="py-2 ">Connect with GDSC: </p>
+            <div className="flex gap-4 row r">
+              <a href="https://www.instagram.com/gdsc.atmiya?igsh=MTVweTFwNGdqdWN4eQ==">
+                <Image
+                  height={20}
+                  width={20}
+                  src={instagramlogo}
+                  alt="Instagram"
+                  className="bounce-out-on-hover object-contain h-8 w-8 rounded-full"
+                />
+              </a>{" "}
+              <a href="https://www.linkedin.com/company/gdsc-atmiya-university/">
+                <Image
+                  height={20}
+                  width={20}
+                  src={
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/480px-LinkedIn_logo_initials.png"
+                  }
+                  alt="Linkedin"
+                  className="bounce-out-on-hover h-8 w-8 rounded-full"
+                />
+              </a>{" "}
+              <a href="https://whatsapp.com/channel/0029VaDA0a52f3EJBeidSK0B">
+                <Image
+                  height={20}
+                  width={20}
+                  src={whatsapplogo}
+                  alt="Whatsapp "
+                  className="bounce-out-on-hover w-8 h-8 rounded-full"
+                />
+              </a>{" "}
+            </div>
+
+            <p className="pt-10 text-sm text-gray-500">
+              Copyright © 2024 Google Developers Student Club, All rights
+              reserved.
+            </p>
+          </main>
+          <div className="flex flex-col justify-center text-sm  items-center">
+            <a
+              className="py-4 text-sm"
+              href="https://www.linkedin.com/in/vivek-bopaliya-391596246/"
+            >
+              Designed & Developed by{" "}
+              <span className="text-blue-600  max-w-lg hover:underline">
+                Vivek Bopaliya
+              </span>
+            </a>
+
+            <div className="text-sm justify-center flex items-center gap-3">
+              <p>Souce Code:</p>
+              <a
+                href="https://github.com/vivekbopaliya/college-devscommunity"
+                className="flex gap-2 justify-center items-center"
+              >
+                <GithubIcon className="bounce-out-on-hover h-8 w-8" />{" "}
+                <p className="text-sm font-light text-blue-600 underline">
+                  Github
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
