@@ -4,11 +4,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wellfleet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 
-
-* {
-  font-family: 'Inter', sans-serif;
-}
 
 @keyframes jumbo {
     from {
@@ -20,12 +19,11 @@
 }
 
 @font-face {
-  src: url("https://www.axis-praxis.org/fonts/webfonts/MetaVariableDemo-Set.woff2")
-    format("woff2");
-  font-family: "Meta";
+  font-family: 'Edo';
   font-style: normal;
   font-weight: normal;
-}
+  src: local('Edo'), url('edo.woff') format('woff');
+  }
 
 
 .footer-empty-div {
@@ -120,29 +118,47 @@
   background: linear-gradient(354deg, rgba(31,7,62,1) 47%, rgba(14,0,33,1) 79%);
 }
 
+.headline {
+  font-family: 'Edo';
+}
+
 .heckathon {
-  font-family: "Meta", sans-serif;
+  font-family: "Edo", sans-serif;
   transition: all 0.5s;
-  -webkit-text-stroke: 4px #d6f4f4;
+  /* -webkit-text-stroke: 4px black; */
   font-variation-settings: "wght" 900, "ital" 1;
-  font-size: 9rem;
+  font-size: 9.3rem;
   text-align: center;
-  color: transparent;
-  text-shadow: 10px 10px 0px #6f00ff,
-    15px 15px 0px black,
-    20px 20px 0px #2f0b61;
+  color: white;
+  text-shadow: 
+    3px 3px 0px lightblue,
+    5px 5px 0px #FF00BF
 }
 
 
-.heckathon:hover {
+/* .heckathon:hover {
   font-variation-settings: "wght" 100, "ital" 0;
   text-shadow: none;
-}
+} */
 
 
 
 .heckathon-phone{
-  font-family: 'Rubik Glitch', system-ui;
+  font-family: "Edo", sans-serif;
+  transition: all 0.5s;
+  /* -webkit-text-stroke: 4px black; */
+  font-variation-settings: "wght" 900, "ital" 1;
+  font-size: 4.8rem;
+  text-align: center;
+  color: white;
+  text-shadow: 
+    3px 3px 0px lightblue,
+    5px 5px 0px #FF00BF
+
+}
+
+.headline-phone {
+  font-family: 'Edo', sans-serif;
 }
 .circle-list {
   list-style-type: none;
@@ -283,6 +299,7 @@
 /* CSS */
 .button-57 {
   position: relative;
+  line-height: 2px;
   overflow: hidden;
   border: 1px solid #18181a;
   color: white;

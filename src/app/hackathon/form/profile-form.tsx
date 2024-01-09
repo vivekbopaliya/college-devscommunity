@@ -35,6 +35,14 @@ import "../../globals.css";
 import { ProblemStatements } from "./problem-statement";
 import { CheckboxWithText } from "./check-box";
 import { CheckCheckIcon } from "lucide-react";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/Drawer";
 
 // This can come from your database or API.
 
@@ -44,9 +52,11 @@ export function ProfileForm() {
   const [teamLeaderEmail, setTeamLeaderEmail] = React.useState("");
   const [teamLeaderPhone, setTeamLeaderPhone] = React.useState("");
   const [transactionID, setTrasactionID] = React.useState("");
+  const [mentor, setMentor] = React.useState("");
 
   const [teamMemberName, setTeamMemebersName] = React.useState([]);
   const [teamMembersEmails, setTeamMemeberEmails] = React.useState([]);
+  const [read, setRead] = React.useState(false);
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
@@ -83,6 +93,7 @@ export function ProfileForm() {
       TeamMembersEmail: teamMembersEmails,
       TransactionID: transactionID,
       ProblemStatement: value,
+      Mentor: mentor,
     };
     try {
       await axios.post(
@@ -109,7 +120,7 @@ export function ProfileForm() {
                     <FormLabel>Team Leader's Name</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Elon Musk"
+                        placeholder="Enter Full Name..."
                         value={teamLeaderName}
                         onChange={(e: any) => setTeamLeaderName(e.target.value)}
                       />
@@ -132,7 +143,7 @@ export function ProfileForm() {
 
                     <FormControl>
                       <Input
-                        placeholder="elonmusk@gmail.com"
+                        placeholder="Enter Email..."
                         value={teamLeaderEmail}
                         onChange={(e: any) =>
                           setTeamLeaderEmail(e.target.value)
@@ -158,7 +169,8 @@ export function ProfileForm() {
 
                     <FormControl>
                       <Input
-                        placeholder="9876543210"
+                        type="number"
+                        placeholder=" Enter Phone Number..."
                         value={teamLeaderPhone}
                         onChange={(e: any) =>
                           setTeamLeaderPhone(e.target.value)
@@ -167,6 +179,31 @@ export function ProfileForm() {
                     </FormControl>
                     <FormDescription>
                       This should be team leader's phone number only.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div className="my-8">
+              <FormField
+                control={form.control}
+                name="bio"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Mentor's Name</FormLabel>
+
+                    <FormControl>
+                      <Input
+                        type="text"
+                        placeholder=" Enter Mentor's Name..."
+                        value={mentor}
+                        onChange={(e: any) => setMentor(e.target.value)}
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      This should be Mentor's name
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -312,14 +349,21 @@ export function ProfileForm() {
             </div>
 
             <div className="mb-5 ">
-              <a
-                className="button-57 mt-5 mb-3"
-                target="_blank"
-                href="http://seminar.atmiya.ac.in/"
-              >
-                <span>Pay Fees</span>
-                <span> 500₹ per team</span>
-              </a>
+              <div className="flex gap-3 items-center ">
+                <a
+                  className="button-57 mt-5 mb-3"
+                  target="_blank"
+                  href="http://seminar.atmiya.ac.in/"
+                >
+                  <span>Pay Fees</span>
+                  <span> 500₹ per team</span>
+                </a>
+
+                <p className="text-sm">
+                  *The registration fee is <b>500rs</b> per team, refundable
+                  upon the completion of the hackathon.*
+                </p>
+              </div>
 
               <FormField
                 control={form.control}
@@ -344,6 +388,70 @@ export function ProfileForm() {
               />
             </div>
 
+            <div>
+              <Drawer>
+                <DrawerTrigger>
+                  <p
+                    onClick={() => setRead(true)}
+                    className="text-blue-600 hover:underline"
+                  >
+                    Rules & Regulations
+                  </p>
+                </DrawerTrigger>
+
+                <DrawerContent>
+                  <div className="mx-auto w-full max-w-lg">
+                    <DrawerHeader>
+                      <DrawerTitle>Open Hackathon</DrawerTitle>
+                      <DrawerDescription>
+                        Code Carnival 2024 is an open hackathon, organized by
+                        the GDSC team of Atmiya University from 2nd to 3rd
+                        March.
+                      </DrawerDescription>
+                      <div className="p-4">
+                        <ul className="circle-list flex flex-col gap-2">
+                          <li>
+                            Code Carnival is a continuous 36-hours hackathon.
+                          </li>
+                          <li>
+                            Teams can have a minimum of 1 and a maximum of 4
+                            participants.
+                          </li>
+                          <li>
+                            Complimentary breakfast, lunch, and dinner will be
+                            provided.
+                          </li>
+                          <li>
+                            Leaving the campus before the conclusion of the
+                            hackathon will result in the loss of your fees.
+                          </li>
+                          <li>
+                            The registration fee is{" "}
+                            <b className="text-blue-300">500rs</b> per team,
+                            refundable upon the completion of the hackathon.
+                          </li>
+                          <li>
+                            Winning teams will receive thrilling prizes and
+                            certificates, while participants will be awarded
+                            certificates of appreciation.
+                          </li>
+                          <li>
+                            Participants must bring their own laptops, chargers,
+                            and any specific hardware required for their
+                            projects.
+                          </li>
+                          <li>
+                            Coding guidelines and judging criteria will be
+                            shared during the hackathon.
+                          </li>
+                        </ul>
+                      </div>
+                    </DrawerHeader>
+                  </div>
+                </DrawerContent>
+              </Drawer>
+            </div>
+
             <div className="mt-5">
               <main className="mb-7 ">
                 <CheckboxWithText />
@@ -352,7 +460,7 @@ export function ProfileForm() {
               <Button
                 type="button"
                 variant={"outline"}
-                disabled={transactionID === ""}
+                disabled={transactionID === "" || read === false}
                 className="disabled:opacity-30"
                 onClick={handleSubmit}
               >
@@ -368,6 +476,12 @@ export function ProfileForm() {
           <CheckCheckIcon color="#00f510" />
           <p color="#00f510">Submitted</p>
         </div>
+      )}
+
+      {(read === false || transactionID === "") && (
+        <p className="text-red-600 text-sm mt-4">
+          *Please read rules & regulations and enter the valid transaction ID*
+        </p>
       )}
     </main>
   );
