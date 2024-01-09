@@ -171,6 +171,7 @@ export function ProfileForm() {
 
                     <FormControl>
                       <Input
+                        type="email"
                         placeholder="Enter Email..."
                         value={teamLeaderEmail}
                         onChange={(e: any) =>
@@ -346,6 +347,7 @@ export function ProfileForm() {
                       </FormDescription>
                       <FormControl>
                         <Input
+                          type="email"
                           onChange={(e: any) => {
                             addEmails(index, e.target.value);
                           }}
@@ -505,7 +507,13 @@ export function ProfileForm() {
                   isLoading={isLoading}
                   type="button"
                   variant={"outline"}
-                  disabled={transactionID === "" || termsAccepted === false}
+                  disabled={
+                    transactionID === "" ||
+                    termsAccepted === false ||
+                    teamLeaderName === "" ||
+                    teamLeaderEmail === "" ||
+                    teamLeaderPhone === ""
+                  }
                   className="disabled:opacity-30"
                   onClick={handleSubmit}
                 >
