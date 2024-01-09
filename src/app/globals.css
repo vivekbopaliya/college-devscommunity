@@ -114,8 +114,8 @@
 }
 
 .hackathon__bg {
-  background: rgb(31,7,62);
-  background: linear-gradient(354deg, rgba(31,7,62,1) 47%, rgba(14,0,33,1) 79%);
+background: rgb(31,7,62);
+background: linear-gradient(354deg, rgba(31,7,62,1) 47%, rgba(14,0,33,1) 79%);
 }
 
 .headline {

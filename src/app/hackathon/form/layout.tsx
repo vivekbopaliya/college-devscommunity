@@ -3,8 +3,8 @@ import { Separator } from "@/components/ui/Seperator";
 import { BadgeAlert } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Forms",
-  description: "Advanced form example using react-hook-form and Zod.",
+  title: "Register for Code Carnival",
+  description: "Register for Code Carnival",
 };
 
 interface SettingsLayoutProps {
@@ -24,8 +24,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
               Register for Code Carnival
             </h2>
             <p className="text-muted-foreground">
-              Kindly read <span>rules & regulations</span>
-              before filling the form.
+              Kindly read rules & regulations before filling the form.
             </p>
           </div>
         </div>

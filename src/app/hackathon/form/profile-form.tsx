@@ -1,9 +1,9 @@
 "use client";
 
 import { useFieldArray, useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, CheckCheckIcon, ChevronsUpDown } from "lucide-react";
+import { Checkbox } from "@/components/ui/Checkbox";
 
 import {
   Command,
@@ -33,8 +33,6 @@ import axios from "axios";
 import { ChevronRight } from "lucide-react";
 import "../../globals.css";
 import { ProblemStatements } from "./problem-statement";
-import { CheckboxWithText } from "./check-box";
-import { CheckCheckIcon } from "lucide-react";
 import {
   Drawer,
   DrawerContent,
@@ -44,10 +42,32 @@ import {
   DrawerTrigger,
 } from "@/components/ui/Drawer";
 
-// This can come from your database or API.
-
 export function ProfileForm() {
+  function getCurrentTimestamp() {
+    const currentDate = new Date();
+
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const year = currentDate.getFullYear();
+
+    let hours = currentDate.getHours();
+    const minutes = String(currentDate.getMinutes()).padStart(2, "0");
+    const seconds = String(currentDate.getSeconds()).padStart(2, "0");
+
+    const ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12;
+
+    const formattedTimestamp = `${day}-${month}-${year} ${hours}:${minutes}:${seconds} ${ampm}`;
+
+    return formattedTimestamp;
+  }
+
   const [submit, setSubmit] = React.useState(false);
+  const [termsAccepted, setTermsAccepted] = React.useState(false);
+
+  const handleCheckboxChange = () => {
+    setTermsAccepted(!termsAccepted);
+  };
   const [teamLeaderName, setTeamLeaderName] = React.useState("");
   const [teamLeaderEmail, setTeamLeaderEmail] = React.useState("");
   const [teamLeaderPhone, setTeamLeaderPhone] = React.useState("");
@@ -56,10 +76,10 @@ export function ProfileForm() {
 
   const [teamMemberName, setTeamMemebersName] = React.useState([]);
   const [teamMembersEmails, setTeamMemeberEmails] = React.useState([]);
-  const [read, setRead] = React.useState(false);
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
   const form = useForm<any>({
     mode: "onChange",
   });
@@ -84,18 +104,21 @@ export function ProfileForm() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    const timeStamp = getCurrentTimestamp();
 
     const data = {
+      Timestamp: timeStamp,
       TeamLeader: teamLeaderName,
       TeamLeaderEmail: teamLeaderEmail,
       TeamLeaderNumber: teamLeaderPhone,
-      TeamMembers: teamMemberName,
-      TeamMembersEmail: teamMembersEmails,
-      TransactionID: transactionID,
       ProblemStatement: value,
       Mentor: mentor,
+      TransactionID: transactionID,
+      TeamMembers: teamMemberName,
+      TeamMembersEmail: teamMembersEmails,
     };
     try {
+      setIsLoading(true);
       await axios.post(
         "https://sheet.best/api/sheets/279366d4-f3e7-43da-82b9-87808dcf6def",
         data
@@ -103,8 +126,13 @@ export function ProfileForm() {
       setSubmit(true);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
+  4;
+
+  getCurrentTimestamp();
 
   return (
     <main className="sm:pb-0 pb-10">
@@ -192,19 +220,17 @@ export function ProfileForm() {
                 name="bio"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Mentor's Name</FormLabel>
+                    <FormLabel>Faculty Mentor's Name</FormLabel>
 
                     <FormControl>
                       <Input
                         type="text"
-                        placeholder=" Enter Mentor's Name..."
+                        placeholder=" Enter Faculty Mentor's Name..."
                         value={mentor}
                         onChange={(e: any) => setMentor(e.target.value)}
                       />
                     </FormControl>
-                    <FormDescription>
-                      This should be Mentor's name
-                    </FormDescription>
+
                     <FormMessage />
                   </FormItem>
                 )}
@@ -349,7 +375,7 @@ export function ProfileForm() {
             </div>
 
             <div className="mb-5 ">
-              <div className="flex gap-3 items-center ">
+              <div className="flex gap-5 items-center ">
                 <a
                   className="button-57 mt-5 mb-3"
                   target="_blank"
@@ -359,9 +385,10 @@ export function ProfileForm() {
                   <span> 500₹ per team</span>
                 </a>
 
-                <p className="text-sm">
+                <p className="text-sm font-light">
                   *The registration fee is <b>500rs</b> per team, refundable
-                  upon the completion of the hackathon.*
+                  upon the completion of the hackathon and it is to be only paid
+                  by the team leader*
                 </p>
               </div>
 
@@ -380,7 +407,7 @@ export function ProfileForm() {
                       />
                     </FormControl>
                     <FormDescription>
-                      ID will be given after the register fees.
+                      ID will be given after the registration fees.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -388,14 +415,11 @@ export function ProfileForm() {
               />
             </div>
 
-            <div>
+            <div className="mt-6 mb-2">
               <Drawer>
                 <DrawerTrigger>
-                  <p
-                    onClick={() => setRead(true)}
-                    className="text-blue-600 hover:underline"
-                  >
-                    Rules & Regulations
+                  <p className="text-sm font-light text-blue-600 hover:underline">
+                    Read Rules & Regulations here
                   </p>
                 </DrawerTrigger>
 
@@ -430,6 +454,11 @@ export function ProfileForm() {
                             <b className="text-blue-300">500rs</b> per team,
                             refundable upon the completion of the hackathon.
                           </li>
+
+                          <li>
+                            We, the organizers have the right to disqualify the
+                            teams if the rules and regulations are violated.
+                          </li>
                           <li>
                             Winning teams will receive thrilling prizes and
                             certificates, while participants will be awarded
@@ -450,35 +479,52 @@ export function ProfileForm() {
                   </div>
                 </DrawerContent>
               </Drawer>
-            </div>
 
-            <div className="mt-5">
-              <main className="mb-7 ">
-                <CheckboxWithText />
-              </main>
+              <div className="mt-4">
+                <main className="mb-7">
+                  <div className="items-top flex space-x-2">
+                    <main onClick={handleCheckboxChange}>
+                      <Checkbox id="terms1" />
+                    </main>
+                    <div className="grid gap-1.5 leading-none">
+                      <label
+                        htmlFor="terms1"
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Accept terms and conditions
+                      </label>
+                      <p className="text-sm text-muted-foreground">
+                        I have thoroughly reviewed and understood all the rules
+                        and regulations.
+                      </p>
+                    </div>
+                  </div>
+                </main>
 
-              <Button
-                type="button"
-                variant={"outline"}
-                disabled={transactionID === "" || read === false}
-                className="disabled:opacity-30"
-                onClick={handleSubmit}
-              >
-                Submit <ChevronRight className="ml-2 w-4 h-4" size={"sm"} />
-              </Button>
+                <Button
+                  isLoading={isLoading}
+                  type="button"
+                  variant={"outline"}
+                  disabled={transactionID === "" || termsAccepted === false}
+                  className="disabled:opacity-30"
+                  onClick={handleSubmit}
+                >
+                  Submit <ChevronRight className="ml-2 w-4 h-4" size={"sm"} />
+                </Button>
+              </div>
             </div>
           </form>
         </Form>
       )}
 
       {submit === true && (
-        <div className="flex gap-3 text-3xl justify-center items-center w-full h-full">
+        <div className="flex gap-3 text-4xl py-36 justify-center items-center w-full h-full">
           <CheckCheckIcon color="#00f510" />
-          <p color="#00f510">Submitted</p>
+          <p className="text-green-500">Submitted</p>
         </div>
       )}
 
-      {(read === false || transactionID === "") && (
+      {transactionID === "" && (
         <p className="text-red-600 text-sm mt-4">
           *Please read rules & regulations and enter the valid transaction ID*
         </p>
