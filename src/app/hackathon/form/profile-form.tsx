@@ -426,7 +426,7 @@ export function ProfileForm() {
                 </DrawerTrigger>
 
                 <DrawerContent>
-                  <div className="mx-auto w-full max-w-xl">
+                  <div className="mx-auto text-sm w-full max-w-xl">
                     <DrawerHeader>
                       <DrawerTitle>Open Hackathon</DrawerTitle>
                       <DrawerDescription>
