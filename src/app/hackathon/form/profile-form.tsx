@@ -426,7 +426,7 @@ export function ProfileForm() {
                 </DrawerTrigger>
 
                 <DrawerContent>
-                  <div className="mx-auto text-sm w-full max-w-xl">
+                  <div className="mx-auto text-sm w-full max-w-2xl">
                     <DrawerHeader>
                       <DrawerTitle>Open Hackathon</DrawerTitle>
                       <DrawerDescription>
@@ -462,6 +462,21 @@ export function ProfileForm() {
                             teams if the rules and regulations are violated.
                           </li>
 
+                          <li>
+                            Participants are required to submit their project
+                            synopsis through the designated online platform. The
+                            submitted synopses will be throughly reviewed by the
+                            organizing committee for evaluation.
+                          </li>
+
+                          <li>
+                            Registration fee of 500 INR for the hackathon is
+                            fully refundable. Refunds will be processed if
+                            participants who adhere to the rules and
+                            regulations, complete the hackathon without leaving
+                            prematurely, and fulfill all participation
+                            requirements.
+                          </li>
                           <li>
                             No outsiders are allowed in the hackathon. You
                             cannot take help from other teams or the people who
