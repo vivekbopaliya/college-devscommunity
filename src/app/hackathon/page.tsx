@@ -46,7 +46,7 @@ const page = () => {
             </DrawerTrigger>
 
             <DrawerContent>
-              <div className="mx-auto w-full max-w-2xl text-sm">
+              <div className="mx-auto w-full max-w-4xl text-sm">
                 <DrawerHeader>
                   <DrawerTitle>Open Hackathon</DrawerTitle>
                   <DrawerDescription>
