@@ -71,7 +71,6 @@ export function ProfileForm() {
   const [teamLeaderName, setTeamLeaderName] = React.useState("");
   const [teamLeaderEmail, setTeamLeaderEmail] = React.useState("");
   const [teamLeaderPhone, setTeamLeaderPhone] = React.useState("");
-  const [transactionID, setTrasactionID] = React.useState("");
   const [mentor, setMentor] = React.useState("");
 
   const [teamMemberName, setTeamMemebersName] = React.useState([]);
@@ -113,7 +112,6 @@ export function ProfileForm() {
       TeamLeaderNumber: teamLeaderPhone,
       ProblemStatement: value,
       Mentor: mentor,
-      TransactionID: transactionID,
       TeamMembers: teamMemberName,
       TeamMembersEmail: teamMembersEmails,
     };
@@ -130,7 +128,6 @@ export function ProfileForm() {
       setIsLoading(false);
     }
   };
-  4;
 
   getCurrentTimestamp();
 
@@ -376,47 +373,6 @@ export function ProfileForm() {
               )}
             </div>
 
-            <div className="mb-5 ">
-              <div className="flex gap-5 items-center ">
-                <a
-                  className="button-57 mt-5 mb-3"
-                  target="_blank"
-                  href="http://seminar.atmiya.ac.in/"
-                >
-                  <span>Pay Fees</span>
-                  <span> 500₹ per team</span>
-                </a>
-
-                <p className="text-sm font-light">
-                  *The registration fee is <b>500rs</b> per team, refundable
-                  upon the completion of the hackathon and it is to be only paid
-                  by the team leader*
-                </p>
-              </div>
-
-              <FormField
-                control={form.control}
-                name="bio"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Transaction ID</FormLabel>
-
-                    <FormControl>
-                      <Input
-                        placeholder="VADE0B248932"
-                        value={transactionID}
-                        onChange={(e: any) => setTrasactionID(e.target.value)}
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      ID will be given after the registration fees.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
             <div className="mt-6 mb-2">
               <Drawer>
                 <DrawerTrigger>
@@ -447,15 +403,6 @@ export function ProfileForm() {
                             Complimentary breakfast, lunch, and dinner will be
                             provided.
                           </li>
-                          <li>
-                            Leaving the campus before the conclusion of the
-                            hackathon will result in the loss of your fees.
-                          </li>
-                          <li>
-                            The registration fee is{" "}
-                            <b className="text-blue-300">500rs</b> per team,
-                            refundable upon the completion of the hackathon.
-                          </li>
 
                           <li>
                             We, the organizers have the right to disqualify the
@@ -469,14 +416,6 @@ export function ProfileForm() {
                             organizing committee for evaluation.
                           </li>
 
-                          <li>
-                            Registration fee of 500 INR for the hackathon is
-                            fully refundable. Refunds will be processed if
-                            participants who adhere to the rules and
-                            regulations, complete the hackathon without leaving
-                            prematurely, and fulfill all participation
-                            requirements.
-                          </li>
                           <li>
                             No outsiders are allowed in the hackathon. You
                             cannot take help from other teams or the people who
@@ -530,7 +469,6 @@ export function ProfileForm() {
                   type="button"
                   variant={"outline"}
                   disabled={
-                    transactionID === "" ||
                     termsAccepted === false ||
                     teamLeaderName === "" ||
                     teamLeaderEmail === "" ||
@@ -552,12 +490,6 @@ export function ProfileForm() {
           <CheckCheckIcon color="#00f510" />
           <p className="text-green-500">Submitted</p>
         </div>
-      )}
-
-      {transactionID === "" && (
-        <p className="text-red-600 text-sm mt-4">
-          *Please read rules & regulations and enter the valid transaction ID*
-        </p>
       )}
     </main>
   );

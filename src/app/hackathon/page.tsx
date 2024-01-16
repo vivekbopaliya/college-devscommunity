@@ -64,15 +64,6 @@ const page = () => {
                         Complimentary breakfast, lunch, and dinner will be
                         provided.
                       </li>
-                      <li>
-                        Leaving the campus before the conclusion of the
-                        hackathon will result in the loss of your fees.
-                      </li>
-                      <li>
-                        The registration fee is{" "}
-                        <b className="text-blue-500">500rs</b> per team,
-                        refundable upon the completion of the hackathon.
-                      </li>
 
                       <li>
                         We, the organizers have the right to disqualify the
@@ -85,13 +76,6 @@ const page = () => {
                         organizing committee for evaluation.
                       </li>
 
-                      <li>
-                        Registration fee of 500 INR for the hackathon is fully
-                        refundable. Refunds will be processed if participants
-                        who adhere to the rules and regulations, complete the
-                        hackathon without leaving prematurely, and fulfill all
-                        participation requirements.
-                      </li>
                       <li>
                         No outsiders are allowed in the hackathon. You cannot
                         take help from other teams or the people who haven't
