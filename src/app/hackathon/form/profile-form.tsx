@@ -118,7 +118,7 @@ export function ProfileForm() {
     try {
       setIsLoading(true);
       await axios.post(
-        "https://sheet.best/api/sheets/279366d4-f3e7-43da-82b9-87808dcf6def",
+        "https://sheet.best/api/sheets/a555abd8-1c45-4e44-b036-5453b0afda40",
         data
       );
       setSubmit(true);
@@ -375,7 +375,8 @@ export function ProfileForm() {
 
             <div className="my-4 flex  gap-4  justify-center items-center">
               <a
-                href="https://docs.google.com/document/d/1cdeWedY8ZBETe6_0HRQdXh-GHhqTqkCgKq_PFcTYJtQ/edit?pli=1"
+                target="_blank"
+                href="https://sheet.best/api/sheets/a555abd8-1c45-4e44-b036-5453b0afda40"
                 className="text-blue-600 hover:underline w-[50%]"
               >
                 Read Synopsis Criterias here.
