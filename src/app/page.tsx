@@ -29,6 +29,7 @@ export default async function Home() {
               <span className="hidden sm:inline">
                 Know about upcoming hackathon
               </span>
+              <span className="sm:hidden inline">upcoming hackathon</span>
             </div>
           </Link>
           <p className="sm:text-8xl text-6xl w-full dark:text-white text-black font-bold">
