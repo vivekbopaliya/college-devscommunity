@@ -373,6 +373,21 @@ export function ProfileForm() {
               )}
             </div>
 
+            <div className="my-4 flex  gap-4  justify-center items-center">
+              <a
+                href="https://docs.google.com/document/d/1cdeWedY8ZBETe6_0HRQdXh-GHhqTqkCgKq_PFcTYJtQ/edit?pli=1"
+                className="text-blue-600 hover:underline w-[50%]"
+              >
+                Read Synopsis Criterias here.
+              </a>
+              <p className="text-sm font-light">
+                *Synopsis submission form will be opend from{" "}
+                <span className="font-semibold text-red-600">01/02/2024</span>{" "}
+                to{" "}
+                <span className="font-semibold text-red-600">15/02/2024</span>*
+              </p>
+            </div>
+
             <div className="mt-6 mb-2">
               <Drawer>
                 <DrawerTrigger>
@@ -394,6 +409,15 @@ export function ProfileForm() {
                         <ul className="circle-list flex flex-col gap-2">
                           <li>
                             Code Carnival is a continuous 36-hours hackathon.
+                          </li>
+                          <li className="text-blue-600 hover:underline">
+                            <a
+                              className="text-sm font-light"
+                              target="_blank"
+                              href="https://docs.google.com/document/d/11Qxq2KI8xSp1Mwhp350FHQQQNeMsjInsFp0ZF0tYCis/edit"
+                            >
+                              Read about Problem Statements.
+                            </a>
                           </li>
                           <li>
                             Teams can have a minimum of 1 and a maximum of 4

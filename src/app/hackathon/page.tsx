@@ -16,7 +16,7 @@ import {
 const page = () => {
   const route = useRouter();
   return (
-    <main className="w-screen sm:-ml-28 -ml-3 sm:py-28 py-36 -mt-16 h-full flex flex-col justify-center items-center hackathon__bg">
+    <main className="w-screen sm:-ml-28 -ml-3 sm:py-28 py-30 -mt-16 h-full flex flex-col justify-center items-center hackathon__bg">
       <div className="  flex flex-col justify-center items-center">
         <div className="flex flex-col items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium">
           <p>⌚ Date: 2nd - 3rd March </p>
@@ -56,6 +56,15 @@ const page = () => {
                   <div className="p-4">
                     <ul className="circle-list flex flex-col gap-2">
                       <li>Code Carnival is a continuous 36-hours hackathon.</li>
+                      <li className="text-blue-600 hover:underline">
+                        <a
+                          className="text-sm font-light"
+                          target="_blank"
+                          href="https://docs.google.com/document/d/11Qxq2KI8xSp1Mwhp350FHQQQNeMsjInsFp0ZF0tYCis/edit"
+                        >
+                          Read about Problem Statements.
+                        </a>
+                      </li>
                       <li>
                         Teams can have a minimum of 1 and a maximum of 4
                         participants.
@@ -110,9 +119,11 @@ const page = () => {
         </main>
       </div>
 
-      <section className="py-10 events flex flex-col justify-center items-center">
-        <p>Total timeline for Code Carnival participants</p>
-        <h1 className="sm:text-5xl text-4xl font-extrabold pb-16 pt-2">
+      <section className="mt-14 pb-4 events flex  flex-col justify-center items-center">
+        <p className="text-white">
+          Total timeline for Code Carnival participants
+        </p>
+        <h1 className="sm:text-5xl dark:text-white text-white text-4xl font-extrabold pb-16 pt-2">
           <span className="red">W</span>hat's <span className="green">C</span>
           oming <span className="blue">U</span>p
           <span className="yellow">..?</span>
@@ -137,7 +148,7 @@ const page = () => {
           {/* @ts-ignore */}
           <li style={{ "--accent-color": "#0F9D58" }}>
             <div className="date text-3xl">Presentation Submission</div>
-            <div className="title"> 1/02/2024 - 15/02/2024</div>
+            <div className="title"> 01/02/2024 - 15/02/2024</div>
             <div className="descr">
               {" "}
               Following successful registration, participants are typically
