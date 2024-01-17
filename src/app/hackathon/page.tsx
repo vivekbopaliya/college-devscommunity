@@ -16,7 +16,7 @@ import {
 const page = () => {
   const route = useRouter();
   return (
-    <main className="w-screen sm:-ml-28 -ml-3 sm:py-28 py-30 -mt-16 h-full flex flex-col justify-center items-center hackathon__bg">
+    <main className="w-screen sm:-ml-28 -ml-3 sm:py-28 py-36 -mt-16 h-full flex flex-col justify-center items-center hackathon__bg">
       <div className="  flex flex-col justify-center items-center">
         <div className="flex flex-col items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium">
           <p>⌚ Date: 2nd - 3rd March </p>
@@ -119,7 +119,7 @@ const page = () => {
         </main>
       </div>
 
-      <section className="mt-14 pb-4 events flex  flex-col justify-center items-center">
+      <section className="py-10 mt-16 events flex  flex-col justify-center items-center">
         <p className="text-white">
           Total timeline for Code Carnival participants
         </p>
