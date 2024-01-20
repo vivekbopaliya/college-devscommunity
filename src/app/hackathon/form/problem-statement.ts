@@ -68,5 +68,5 @@ export const ProblemStatements = [
   { label: "TrafficTrax", value: "TrafficTrax" },
   { label: "DeepGuard", value: "DeepGuard" },
   { label: "StealthPlate", value: "StealthPlate" },
-  
+  { label: "ITI Career Path Finder", value: "ITI Career Path Finder" },
 ];

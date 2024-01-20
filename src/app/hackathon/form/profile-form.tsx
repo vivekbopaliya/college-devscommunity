@@ -41,6 +41,8 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/Drawer";
+import { toast } from "@/hooks/use-toast";
+require("dotenv").config();
 
 export function ProfileForm() {
   function getCurrentTimestamp() {
@@ -117,13 +119,19 @@ export function ProfileForm() {
     };
     try {
       setIsLoading(true);
-      await axios.post(
-        "https://sheet.best/api/sheets/a555abd8-1c45-4e44-b036-5453b0afda40",
-        data
-      );
+      console.log("fdskljfl");
+      await axios.post("/api/hackathon", data);
       setSubmit(true);
+      toast({
+        title: "Form has been submitted successfully.",
+      });
     } catch (error) {
-      console.log(error);
+      toast({
+        title: "Something went wrong.",
+        description:
+          "Your form has not been submitted, please contact at gdsc.atmiya@gmail.com",
+        variant: "destructive",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -376,7 +384,7 @@ export function ProfileForm() {
             <div className="my-4 flex  gap-4  justify-center items-center">
               <a
                 target="_blank"
-                href="https://sheet.best/api/sheets/a555abd8-1c45-4e44-b036-5453b0afda40"
+                href="https://docs.google.com/document/d/1cdeWedY8ZBETe6_0HRQdXh-GHhqTqkCgKq_PFcTYJtQ/edit"
                 className="text-blue-600 hover:underline w-[50%]"
               >
                 Read Synopsis Criterias here.
