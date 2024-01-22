@@ -136,7 +136,8 @@ export const Courses = [
   { label: "B.Tech. IT Engineering", value: "B.Tech. IT Engineering" },
   { label: "BCA", value: "BCA" },
   { label: "MCA", value: "MCA" },
-  { label: "BscIT", value: "BscIT" },
-  { label: "MscIT", value: "MscIT" },
+  { label: "B.Sc. IT", value: "B.Sc. IT" },
+  { label: "M.Sc. IT", value: "M.Sc. IT" },
   { label: "M.Tech.", value: "M.Tech." },
+  { label: "Others", value: "Others" },
 ];

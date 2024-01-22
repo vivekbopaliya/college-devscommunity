@@ -60,6 +60,7 @@ export default function ProfileForm() {
   const handleCheckboxChange = () => {
     setTermsAccepted(!termsAccepted);
   };
+  const [otherCourse, setOtherCourse] = React.useState("");
   const [teamMember1Name, setTeamMember1Name] = React.useState("");
   const route = useRouter();
   const [universityOpen, setUniversityOpen] = React.useState(false);
@@ -83,6 +84,7 @@ export default function ProfileForm() {
       M2_College: university,
       M2_Other: otherCollege,
       M2_Course: course,
+      M2_OtherCourse: otherCourse,
     };
     try {
       setIsLoading(true);
@@ -151,7 +153,7 @@ export default function ProfileForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Team Leader's Email</FormLabel>
+                  <FormLabel>Team Member 2's Email</FormLabel>
 
                   <FormControl>
                     <Input
@@ -162,7 +164,7 @@ export default function ProfileForm() {
                     />
                   </FormControl>
                   <FormDescription>
-                    This should be team leader's email only.
+                    This should be team member 2's email only.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -171,9 +173,7 @@ export default function ProfileForm() {
           </div>
 
           <div className="my-8  flex flex-col gap-3">
-            <p className="text-sm font-light">
-              Select Team Member 2's University
-            </p>
+            <p className="text-sm font-light">Select Team Member 2's College</p>
             <Popover open={universityOpen} onOpenChange={setUniversityOpen}>
               <PopoverTrigger asChild>
                 {/* @ts-ignore */}
@@ -182,7 +182,7 @@ export default function ProfileForm() {
                   aria-expanded={open}
                   className="w-[300px] justify-between dark:text-white"
                 >
-                  {university ? university : "Select your Univeristy"}
+                  {university ? university : "Select your College"}
                   <ChevronsUpDown className="ml-2 h-4 w-10 shrink-0 opacity-50" />
                 </Button>
               </PopoverTrigger>
@@ -283,6 +283,31 @@ export default function ProfileForm() {
                 </Command>
               </PopoverContent>
             </Popover>
+
+            <section className="mt-3">
+              {course === "others" && (
+                <FormField
+                  control={form.control}
+                  name="bio"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-blue-600">
+                        Enter other Course name:{" "}
+                      </FormLabel>
+
+                      <FormControl>
+                        <Input
+                          type="text"
+                          value={otherCourse}
+                          onChange={(e: any) => setOtherCourse(e.target.value)}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
+            </section>
           </div>
 
           <div className="mt-4">

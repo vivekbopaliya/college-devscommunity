@@ -36,30 +36,7 @@ import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 
 export default function ProfileForm() {
-  function getCurrentTimestamp() {
-    const currentDate = new Date();
-
-    const day = String(currentDate.getDate()).padStart(2, "0");
-    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-    const year = currentDate.getFullYear();
-
-    let hours = currentDate.getHours();
-    const minutes = String(currentDate.getMinutes()).padStart(2, "0");
-    const seconds = String(currentDate.getSeconds()).padStart(2, "0");
-
-    const ampm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12 || 12;
-
-    const formattedTimestamp = `${day}-${month}-${year} ${hours}:${minutes}:${seconds} ${ampm}`;
-
-    return formattedTimestamp;
-  }
-
-  const [termsAccepted, setTermsAccepted] = React.useState(false);
-
-  const handleCheckboxChange = () => {
-    setTermsAccepted(!termsAccepted);
-  };
+  const [otherCourse, setOtherCourse] = React.useState("");
   const [teamMember1Name, setTeamMember1Name] = React.useState("");
   const [teamLeaderEmail, setTeamLeaderEmail] = React.useState("");
 
@@ -84,6 +61,7 @@ export default function ProfileForm() {
       M1_College: university,
       M1_Other: otherCollege,
       M1_Course: course,
+      M1_OtherCourse: otherCourse,
     };
     try {
       setIsLoading(true);
@@ -151,7 +129,7 @@ export default function ProfileForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Team Leader's Email</FormLabel>
+                  <FormLabel>Team Team Member 1's Email</FormLabel>
 
                   <FormControl>
                     <Input
@@ -162,7 +140,7 @@ export default function ProfileForm() {
                     />
                   </FormControl>
                   <FormDescription>
-                    This should be team leader's email only.
+                    This should be team member 1's email only.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -171,9 +149,7 @@ export default function ProfileForm() {
           </div>
 
           <div className="my-8  flex flex-col gap-3">
-            <p className="text-sm font-light">
-              Select Team Member 1's University
-            </p>
+            <p className="text-sm font-light">Select Team Member 1's College</p>
             <Popover open={universityOpen} onOpenChange={setUniversityOpen}>
               <PopoverTrigger asChild>
                 {/* @ts-ignore */}
@@ -224,7 +200,7 @@ export default function ProfileForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-blue-600">
-                        Enter other College name:{" "}
+                        Enter other College's name:{" "}
                       </FormLabel>
 
                       <FormControl>
@@ -283,6 +259,31 @@ export default function ProfileForm() {
                 </Command>
               </PopoverContent>
             </Popover>
+
+            <section className="mt-3">
+              {course === "others" && (
+                <FormField
+                  control={form.control}
+                  name="bio"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-blue-600">
+                        Enter other Course name:{" "}
+                      </FormLabel>
+
+                      <FormControl>
+                        <Input
+                          type="text"
+                          value={otherCourse}
+                          onChange={(e: any) => setOtherCourse(e.target.value)}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
+            </section>
           </div>
 
           <div className="mt-4">

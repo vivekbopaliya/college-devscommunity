@@ -77,6 +77,7 @@ export function ProfileForm() {
   const [universityOpen, setUniversityOpen] = React.useState(false);
   const [courseOpen, setCourseOpen] = React.useState(false);
   const [otherCollege, setOtherCollege] = React.useState("");
+  const [otherCourse, setOtherCourse] = React.useState("");
 
   const [value, setValue] = React.useState("");
   const [university, setUniversity] = React.useState("");
@@ -104,6 +105,7 @@ export function ProfileForm() {
       Leader_College: university,
       Leader_Other: otherCollege,
       Leader_Course: course,
+      Leader_OtherCourse: otherCourse,
       Mentor: mentor,
     };
     try {
@@ -337,6 +339,31 @@ export function ProfileForm() {
                 </Command>
               </PopoverContent>
             </Popover>
+
+            <section className="mt-3">
+              {course === "others" && (
+                <FormField
+                  control={form.control}
+                  name="bio"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-blue-600">
+                        Enter other Course name:{" "}
+                      </FormLabel>
+
+                      <FormControl>
+                        <Input
+                          type="text"
+                          value={otherCourse}
+                          onChange={(e: any) => setOtherCourse(e.target.value)}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
+            </section>
           </div>
           <div className="my-8 flex flex-col gap-3">
             <a

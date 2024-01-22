@@ -41,6 +41,8 @@ export default function ProfileForm() {
   const handleCheckboxChange = () => {
     setTermsAccepted(!termsAccepted);
   };
+
+  const [otherCourse, setOtherCourse] = React.useState("");
   const [teamMember1Name, setTeamMember1Name] = React.useState("");
   const route = useRouter();
   const [universityOpen, setUniversityOpen] = React.useState(false);
@@ -64,6 +66,7 @@ export default function ProfileForm() {
       M3_College: university,
       M3_Other: otherCollege,
       M3_Course: course,
+      M3_OtherCourse: otherCourse,
     };
     try {
       setIsLoading(true);
@@ -134,7 +137,7 @@ export default function ProfileForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Team Leader's Email</FormLabel>
+                  <FormLabel>Team Member 3's Email</FormLabel>
 
                   <FormControl>
                     <Input
@@ -265,6 +268,31 @@ export default function ProfileForm() {
                 </Command>
               </PopoverContent>
             </Popover>
+
+            <section className="mt-3">
+              {course === "others" && (
+                <FormField
+                  control={form.control}
+                  name="bio"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-blue-600">
+                        Enter other Course name:{" "}
+                      </FormLabel>
+
+                      <FormControl>
+                        <Input
+                          type="text"
+                          value={otherCourse}
+                          onChange={(e: any) => setOtherCourse(e.target.value)}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
+            </section>
           </div>
 
           <div className="mt-4">
