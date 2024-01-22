@@ -70,3 +70,73 @@ export const ProblemStatements = [
   { label: "StealthPlate", value: "StealthPlate" },
   { label: "ITI Career Path Finder", value: "ITI Career Path Finder" },
 ];
+
+export const Universities = [
+  {
+    label: "Atmiya Univerisity",
+    value: "Atmiya Univerisity",
+  },
+  {
+    label: "Marwadi Univerisity",
+    value: "Marwadi Univerisity",
+  },
+  {
+    label: "RK Univerisity",
+    value: "RK Univerisity",
+  },
+  {
+    label: "Darshan Univerisity",
+    value: "Darshan Univerisity",
+  },
+
+  {
+    label: "Saurashtra Univerisity",
+    value: "Saurashtra Univerisity",
+  },
+
+  {
+    label: "VVP",
+    value: "VVP",
+  },
+
+  {
+    label: "GEC Rajkot",
+    value: "GEC Rajkot",
+  },
+
+  {
+    label: "Christ College",
+    value: "Christ College",
+  },
+
+  {
+    label: "A.V.P.T.I",
+    value: "A.V.P.T.I",
+  },
+  {
+    label: "Govt. Polytechnic Rajkot",
+    value: "Govt. Polytechnic Rajkot",
+  },
+
+  {
+    label: "Others",
+    value: "Others",
+  },
+];
+
+export const Courses = [
+  {
+    label: "B.Tech. Computer Engineering",
+    value: "B.Tech. Computer Engineering",
+  },
+  {
+    label: "B.Tech. Computer Science and Engineering",
+    value: "B.Tech. Computer Science and Engineering",
+  },
+  { label: "B.Tech. IT Engineering", value: "B.Tech. IT Engineering" },
+  { label: "BCA", value: "BCA" },
+  { label: "MCA", value: "MCA" },
+  { label: "BscIT", value: "BscIT" },
+  { label: "MscIT", value: "MscIT" },
+  { label: "M.Tech.", value: "M.Tech." },
+];

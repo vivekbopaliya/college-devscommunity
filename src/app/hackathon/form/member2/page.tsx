@@ -1,0 +1,303 @@
+"use client";
+
+import { useFieldArray, useForm } from "react-hook-form";
+import { cn } from "@/lib/utils";
+import { Check, CheckCheckIcon, ChevronsUpDown } from "lucide-react";
+import { Checkbox } from "@/components/ui/Checkbox";
+
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/Command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/Popover";
+import { Button } from "@/components/ui/Button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/Form";
+import { Input } from "@/components/ui/Input";
+import React from "react";
+import axios from "axios";
+import { ChevronRight } from "lucide-react";
+import { Courses, ProblemStatements, Universities } from "../problem-statement";
+import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
+
+export default function ProfileForm() {
+  function getCurrentTimestamp() {
+    const currentDate = new Date();
+
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const year = currentDate.getFullYear();
+
+    let hours = currentDate.getHours();
+    const minutes = String(currentDate.getMinutes()).padStart(2, "0");
+    const seconds = String(currentDate.getSeconds()).padStart(2, "0");
+
+    const ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12;
+
+    const formattedTimestamp = `${day}-${month}-${year} ${hours}:${minutes}:${seconds} ${ampm}`;
+
+    return formattedTimestamp;
+  }
+
+  const [termsAccepted, setTermsAccepted] = React.useState(false);
+
+  const handleCheckboxChange = () => {
+    setTermsAccepted(!termsAccepted);
+  };
+  const [teamMember1Name, setTeamMember1Name] = React.useState("");
+  const route = useRouter();
+  const [universityOpen, setUniversityOpen] = React.useState(false);
+  const [courseOpen, setCourseOpen] = React.useState(false);
+  const [otherCollege, setOtherCollege] = React.useState("");
+  const [teamLeaderEmail, setTeamLeaderEmail] = React.useState("");
+
+  const [university, setUniversity] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [course, setCourse] = React.useState("");
+
+  const form = useForm<any>({
+    mode: "onChange",
+  });
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const data = {
+      Member_2: teamMember1Name,
+      M2_Email: teamLeaderEmail,
+      M2_College: university,
+      M2_Other: otherCollege,
+      M2_Course: course,
+    };
+    try {
+      setIsLoading(true);
+
+      const existingDataJSON = localStorage.getItem("teamLeader");
+
+      const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : {};
+
+      const mergedData = { ...existingData, ...data };
+
+      const mergedDataJSON = JSON.stringify(mergedData);
+
+      localStorage.setItem("teamLeader", mergedDataJSON);
+      toast({
+        title: "Enter other team members credentials and submit.",
+      });
+      route.push("/hackathon/form/member3");
+    } catch (error) {
+      toast({
+        title: "Something went wrong.",
+        description:
+          "Your form has not been submitted, please contact at gdsc.atmiya@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  getCurrentTimestamp();
+
+  return (
+    <main className="sm:pb-0 pb-10">
+      <p className="text-sm font-light my-2 w-3/5 text-green-500">
+        Form for team members, if there are none in your team other than you,
+        simply proceed to the next step.
+      </p>
+      <Form {...form}>
+        <form className="space-y-16">
+          <div className="my-3">
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Team Member 2's Name</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter Full Name..."
+                      value={teamMember1Name}
+                      onChange={(e: any) => setTeamMember1Name(e.target.value)}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    This should be team member 2's name only.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div className="my-8">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Team Leader's Email</FormLabel>
+
+                  <FormControl>
+                    <Input
+                      type="email"
+                      placeholder="Enter Email..."
+                      value={teamLeaderEmail}
+                      onChange={(e: any) => setTeamLeaderEmail(e.target.value)}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    This should be team leader's email only.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div className="my-8  flex flex-col gap-3">
+            <p className="text-sm font-light">
+              Select Team Member 2's University
+            </p>
+            <Popover open={universityOpen} onOpenChange={setUniversityOpen}>
+              <PopoverTrigger asChild>
+                {/* @ts-ignore */}
+                <Button
+                  role="combobox"
+                  aria-expanded={open}
+                  className="w-[300px] justify-between dark:text-white"
+                >
+                  {university ? university : "Select your Univeristy"}
+                  <ChevronsUpDown className="ml-2 h-4 w-10 shrink-0 opacity-50" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-[500px] p-0  overflow-y-auto max-h-[400px]">
+                <Command>
+                  <CommandGroup>
+                    {Universities.map((ps: any) => (
+                      <CommandItem
+                        key={ps.label}
+                        value={ps.label}
+                        onSelect={(currentValue) => {
+                          setUniversity(
+                            currentValue === university ? "" : currentValue
+                          );
+                          setUniversityOpen(false);
+                        }}
+                      >
+                        <Check
+                          className={cn(
+                            "mr-2 h-4 w-4",
+                            university === ps.label
+                              ? "opacity-100"
+                              : "opacity-0"
+                          )}
+                        />
+                        {ps.label}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </Command>
+              </PopoverContent>
+            </Popover>
+
+            <section className="mt-3">
+              {university === "others" && (
+                <FormField
+                  control={form.control}
+                  name="bio"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-blue-600">
+                        Enter other College name:{" "}
+                      </FormLabel>
+
+                      <FormControl>
+                        <Input
+                          type="text"
+                          value={otherCollege}
+                          onChange={(e: any) => setOtherCollege(e.target.value)}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
+            </section>
+          </div>
+
+          <div className="my-8  flex flex-col gap-3">
+            <p className="text-sm font-light">Select team member 2's Course</p>
+            <Popover open={courseOpen} onOpenChange={setCourseOpen}>
+              <PopoverTrigger asChild>
+                {/* @ts-ignore */}
+                <Button
+                  role="combobox"
+                  aria-expanded={open}
+                  className="w-[300px] justify-between dark:text-white"
+                >
+                  {course ? course : "Select your Course"}
+                  <ChevronsUpDown className="ml-2 h-4 w-10 shrink-0 opacity-50" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-[500px] p-0  overflow-y-auto max-h-[400px]">
+                <Command>
+                  <CommandGroup>
+                    {Courses.map((ps: any) => (
+                      <CommandItem
+                        key={ps.label}
+                        value={ps.label}
+                        onSelect={(currentValue) => {
+                          setCourse(
+                            currentValue === course ? "" : currentValue
+                          );
+                          setCourseOpen(false);
+                        }}
+                      >
+                        <Check
+                          className={cn(
+                            "mr-2 h-4 w-4",
+                            course === ps.label ? "opacity-100" : "opacity-0"
+                          )}
+                        />
+                        {ps.label}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </Command>
+              </PopoverContent>
+            </Popover>
+          </div>
+
+          <div className="mt-4">
+            <Button
+              isLoading={isLoading}
+              type="button"
+              variant={"outline"}
+              className="disabled:opacity-30"
+              onClick={handleSubmit}
+            >
+              Next <ChevronRight className="ml-2 w-4 h-4" size={"sm"} />
+            </Button>
+          </div>
+        </form>
+      </Form>
+    </main>
+  );
+}
