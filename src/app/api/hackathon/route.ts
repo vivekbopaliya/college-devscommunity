@@ -6,7 +6,7 @@ export async function POST(req: Request) {
 
   try {
     await axios.post(
-      "https://sheet.best/api/sheets/436c6e22-3e1f-4ce5-bc37-c124ce60fe12",
+      "https://sheet.best/api/sheets/1a8fb095-9b50-4b59-8a3a-15c263b532a3",
       body
     );
     return new Response("okay");
