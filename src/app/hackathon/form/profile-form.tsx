@@ -429,7 +429,7 @@ export function ProfileForm() {
             <p className="text-sm font-light">
               *Synopsis submission form will be opend from{" "}
               <span className="font-semibold text-red-600">01/02/2024</span> to{" "}
-              <span className="font-semibold text-red-600">15/02/2024</span>*
+              <span className="font-semibold text-red-600">10/02/2024</span>*
             </p>
           </div>
 

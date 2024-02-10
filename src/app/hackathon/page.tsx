@@ -170,7 +170,7 @@ const page = () => {
 
           <li style={{ "--accent-color": "#4285F4" }}>
             <div className="date text-3xl">Acceptance Notification</div>
-            <div className="title">17/02/2024</div>
+            <div className="title">22/02/2024</div>
             <div className="descr">
               {" "}
               After the presentation submission deadline, organizers review the
@@ -186,7 +186,7 @@ const page = () => {
 
           <li style={{ "--accent-color": "#F8A218" }}>
             <div className="date text-3xl">Final Details Declaration</div>
-            <div className="title"> 20/02/2024</div>
+            <div className="title"> 24/02/2024</div>
             <div className="descr">
               As the hackathon date approaches, organizers release final details
               to the accepted participants. This includes essential information
