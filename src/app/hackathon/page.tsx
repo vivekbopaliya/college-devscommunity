@@ -158,14 +158,13 @@ const page = () => {
               have done. Presentation submission allows organizers to review and
               assess the proposed projects, ensuring they align with the
               hackathon's theme and guidelines.
-              <a
-                className="mt-3"
-                href="https://docs.google.com/forms/d/e/1FAIpQLSczq2ZTr4GIC8D6n_f29TjXlFbb1vBtxBs6WO9C0eoFtodWFg/viewform"
-              >
-                Submit your Synopsis{" "}
-                <span className="text-blue-600 hover:underline">here</span>here
-              </a>
             </div>
+            <a
+              className="mt-3 text-red-500 font-bold"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSczq2ZTr4GIC8D6n_f29TjXlFbb1vBtxBs6WO9C0eoFtodWFg/viewform"
+            >
+              Submit your Synopsis <span className="hover:underline">here</span>
+            </a>
           </li>
           {/* @ts-ignore */}
 
