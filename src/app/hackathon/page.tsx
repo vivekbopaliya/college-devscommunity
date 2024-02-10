@@ -132,7 +132,7 @@ const page = () => {
           {/* @ts-ignore */}
           <li style={{ "--accent-color": "#EA4335" }}>
             <div className="date text-3xl">Registration</div>
-            <div className="title"> 10/01/2024 - 10/02/2024</div>
+            <div className="title"> 10/01/2024 - 18/02/2024</div>
             <div className="descr">
               {" "}
               The registration phase marks the initial step for participants to
@@ -147,8 +147,8 @@ const page = () => {
 
           {/* @ts-ignore */}
           <li style={{ "--accent-color": "#0F9D58" }}>
-            <div className="date text-3xl">Presentation Submission</div>
-            <div className="title"> 01/02/2024 - 15/02/2024</div>
+            <div className="date text-3xl">Synopsis Submission</div>
+            <div className="title"> 01/02/2024 - 20/02/2024</div>
             <div className="descr">
               {" "}
               Following successful registration, participants are typically
@@ -158,6 +158,13 @@ const page = () => {
               have done. Presentation submission allows organizers to review and
               assess the proposed projects, ensuring they align with the
               hackathon's theme and guidelines.
+              <a
+                className="mt-3"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSczq2ZTr4GIC8D6n_f29TjXlFbb1vBtxBs6WO9C0eoFtodWFg/viewform"
+              >
+                Submit your Synopsis{" "}
+                <span className="text-blue-600 hover:underline">here</span>here
+              </a>
             </div>
           </li>
           {/* @ts-ignore */}

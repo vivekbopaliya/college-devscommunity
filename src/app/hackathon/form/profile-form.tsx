@@ -539,7 +539,8 @@ export function ProfileForm() {
                   termsAccepted === false ||
                   teamLeaderName === "" ||
                   teamLeaderEmail === "" ||
-                  teamLeaderPhone === ""
+                  teamLeaderPhone === "" ||
+                  value === ""
                 }
                 className="disabled:opacity-30"
                 onClick={handleSubmit}
