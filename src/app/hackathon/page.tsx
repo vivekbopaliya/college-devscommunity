@@ -160,10 +160,10 @@ const page = () => {
               hackathon's theme and guidelines.
             </div>
             <a
-              className="mt-3 text-red-500 font-bold"
+              className="mt-3 text-white dark:text-white font-bold hover:underline"
               href="https://docs.google.com/forms/d/e/1FAIpQLSczq2ZTr4GIC8D6n_f29TjXlFbb1vBtxBs6WO9C0eoFtodWFg/viewform"
             >
-              Submit your Synopsis <span className="hover:underline">here</span>
+              *Submit your Synopsis here*
             </a>
           </li>
           {/* @ts-ignore */}
