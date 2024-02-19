@@ -41,7 +41,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
             <BadgeAlert size={50} className="fill-red-600" />
           </div>
           <div className="space-y-0.5">
-            <h2 className="text-3xl text-blue-600 font-bold tracking-tight">
+            <h2 className="text-3xl text-red-600 font-bold tracking-tight">
               Register Closed!
             </h2>
             <p className="text-muted-foreground">
