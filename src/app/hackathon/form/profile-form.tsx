@@ -144,6 +144,7 @@ export function ProfileForm() {
                   <FormLabel>Team Leader's Name</FormLabel>
                   <FormControl>
                     <Input
+                      readOnly
                       placeholder="Enter Full Name..."
                       value={teamLeaderName}
                       onChange={(e: any) => setTeamLeaderName(e.target.value)}
@@ -167,6 +168,7 @@ export function ProfileForm() {
 
                   <FormControl>
                     <Input
+                      readOnly
                       type="email"
                       placeholder="Enter Email..."
                       value={teamLeaderEmail}
@@ -192,6 +194,7 @@ export function ProfileForm() {
 
                   <FormControl>
                     <Input
+                      readOnly
                       type="number"
                       placeholder=" Enter Phone Number..."
                       value={teamLeaderPhone}
@@ -217,6 +220,7 @@ export function ProfileForm() {
 
                   <FormControl>
                     <Input
+                      readOnly
                       type="text"
                       placeholder=" Enter Faculty Mentor's Name..."
                       value={mentor}
@@ -286,6 +290,7 @@ export function ProfileForm() {
 
                       <FormControl>
                         <Input
+                          readOnly
                           type="text"
                           value={otherCollege}
                           onChange={(e: any) => setOtherCollege(e.target.value)}
@@ -353,6 +358,7 @@ export function ProfileForm() {
 
                       <FormControl>
                         <Input
+                          readOnly
                           type="text"
                           value={otherCourse}
                           onChange={(e: any) => setOtherCourse(e.target.value)}
@@ -511,41 +517,15 @@ export function ProfileForm() {
             </Drawer>
 
             <div className="mt-4">
-              <main className="mb-7">
-                <div className="items-top flex space-x-2">
-                  <main onClick={handleCheckboxChange}>
-                    <Checkbox id="terms1" />
-                  </main>
-                  <div className="grid gap-1.5 leading-none">
-                    <label
-                      htmlFor="terms1"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Accept terms and conditions
-                    </label>
-                    <p className="text-sm text-muted-foreground">
-                      I have thoroughly reviewed and understood all the rules
-                      and regulations.
-                    </p>
-                  </div>
-                </div>
-              </main>
-
               <Button
                 isLoading={isLoading}
                 type="button"
                 variant={"outline"}
-                disabled={
-                  termsAccepted === false ||
-                  teamLeaderName === "" ||
-                  teamLeaderEmail === "" ||
-                  teamLeaderPhone === "" ||
-                  value === ""
-                }
+                disabled
                 className="disabled:opacity-30"
-                onClick={handleSubmit}
+                // onClick={handleSubmit}
               >
-                Next <ChevronRight className="ml-2 w-4 h-4" size={"sm"} />
+                Register Closed
               </Button>
             </div>
           </div>
