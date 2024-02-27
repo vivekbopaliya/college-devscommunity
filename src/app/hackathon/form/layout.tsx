@@ -41,13 +41,8 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
             <BadgeAlert size={40} className="fill-blue-600" />
           </div>
           <div className="space-y-0.5">
-<<<<<<< HEAD
-            <h2 className="text-3xl text-red-600 font-bold tracking-tight">
-              Register Closed!
-=======
             <h2 className="text-2xl text-blue-600 font-bold tracking-tight">
               Register for Code Carnival
->>>>>>> parent of f15157c (register closed)
             </h2>
             <p className="text-muted-foreground">
               Fill out the form step by step, adding details for each team
